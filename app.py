@@ -5,13 +5,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-
+# Create subsections 
 header = st.container()
 dataset = st.container()
 analyse_data = st.container()
 geo_zones = st.container()
 six_states = st.container()
 causes  = st.container()
+
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.text("By Zaynab Arowosegbe")
@@ -25,7 +26,7 @@ with dataset:
     price_data = pd.read_csv("prices.csv")
     price_data["Date"] = pd.to_datetime(price_data["Date"], format="%d/%m/%Y")
     low_high = pd.read_csv("lowest_highest.csv")
-    zones = pd.read_csv("zone_prices")
+    
     # Show data
     st.write(price_data.head())
     st.write(low_high.head())
@@ -68,12 +69,15 @@ with analyse_data:
     # Comparing accresso geopolitical zones
 with geo_zones:
     st.header("Comparing current prices (July 2022) of major food items accross geopolitical zones")
+
     # Get column names from zones dataset
+    zones = pd.read_csv("zone_prices.csv")
     columns = ['Beans brown,sold loose', 'Beef (boneless)', 'Bread sliced 500g',
     'Gaari white (sold loose)', 'Onion bulb',
     'Palm oil: 1 bottle (specify bottle)', 'Rice local (sold loose)',
     'Tomato', 'Wheat flour: prepacked (golden penny 2kg)', 'Yam tuber']
-     # Create list "max" that contains the highest price per item
+
+    # Create list "max" that contains the highest price per item
     max = []
     for c in columns:
         max.append(zones[c].max())
@@ -105,7 +109,7 @@ with geo_zones:
                format = [None, ",.2f"],
                prefix = [None, '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦']))
                 ])
-    fig.update_layout(title="Average Prices of Selected Food Items per Geopolitical Zones (July 2022)<br>(Highest Prices in Red)")
+    fig.update_layout(title="Average Prices of Selected Food Items per Geopolitical Zones (July 2022)<br>(Highest Prices in Red)", width=750,height=650,)
     st.write(fig)
 
 with six_states:
