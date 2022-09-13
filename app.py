@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 
 header = st.beta_container()
@@ -28,7 +28,7 @@ st.write(low_high.head())
 # y = (max - min) / price
 
 # # plot graph
-# fig, ax = plt.subplots(figsize=(15,10))
+fig, ax = plt.subplots(figsize=(15,10))
 # ax.plot(price_data['Beef Bone in'])
 # plt.ylabel("Price in Naira (₦)", fontsize=15)
 # plt.xlabel("Year", fontsize=15)
@@ -39,6 +39,6 @@ st.write(low_high.head())
 # for s in ['top', 'right']:
 #     ax.spines[s].set_visible(False)
 # # Show plot
-# st.pyplot(fig)
+st.pyplot(fig)
 
 
