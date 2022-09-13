@@ -162,34 +162,36 @@ with geo_zones:
                format = [None, ",.2f"],
                prefix = [None, '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦']))
                 ])
-    fig.update_layout(width=1000, height=700,autosize=True)
+    fig.update_layout(width=1200, height=700,autosize=True)
     fig.update_traces(cells_font=dict(size = 15))
-    st.subheader("Current Average Prices of Selected Food Items per Geopolitical Zones (July 2022)")
+    #st.subheader("Current Average Prices of Selected Food Items per Geopolitical Zones (July 2022)")
     st.markdown("**(Highest Prices in Red)**")
     st.write(fig)
 
 with six_states:
     st.header("Comparing current prices (July 2022) of six food items accross six states")
-    fig, ax = plt.subplots(2,3, figsize=(25,13))
-    ax[0,0].bar(current_price["State"], current_price["Beans brown,sold loose"])
-    ax[0,0].title.set_text("Brown Beans")
+    fig, (ax1, ax2) = plt.subplots(1,2, figsize=(90,50))
+    ax1.bar(current_price["State"], current_price["Beans brown,sold loose"])
+    ax1.set_title("Brown Beans", fontsize=70)
+    ax1.tick_params(size=20)
 
-    ax[0,1].bar(current_price["State"], current_price["Bread sliced 500g"])
-    ax[0,1].title.set_text("Bread (500g)")
+    ax2.bar(current_price["State"], current_price["Bread sliced 500g"])
+    ax2.set_title("Bread (500g)", fontsize=70)
 
-    ax[0,2].bar(current_price["State"], current_price["Broken Rice (Ofada)"])
-    ax[0,2].title.set_text("Ofada Rice")
+    # ax[0,2].bar(current_price["State"], current_price["Broken Rice (Ofada)"])
+    # ax[0,2].set_title("Ofada Rice", fontsize=40)
 
-    ax[1,0].bar(current_price["State"], current_price["Gari white,sold loose"])
-    ax[1,0].title.set_text("White Gaari")
+    # ax[1,0].bar(current_price["State"], current_price["Gari white,sold loose"])
+    # ax[1,0].set_title("White Gaari", fontsize=40)
 
-    ax[1,1].bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
-    ax[1,1].title.set_text("Vegetable Oil")
+    # ax[1,1].bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
+    # ax[1,1].set_title("Vegetable Oil", fontsize=40)
 
-    ax[1,2].bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
-    ax[1,2].title.set_text("Palm Oil")
+    # ax[1,2].bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
+    # ax[1,2].set_title("Palm Oil", fontsize=40)
+    # plt.xticks(fontsize=20)
 
-    fig.text(0.15, 0.95, "Current Price (July 2022) of Six major Food Item in a State from each Geopolitical Zone", fontsize=20,fontweight="semibold")
+    #fig.text(0.15, 0.95, "Current Price (July 2022) of Six major Food Item in a State from each Geopolitical Zone", fontsize=50,fontweight="semibold")
     st.write(fig)
 
 
