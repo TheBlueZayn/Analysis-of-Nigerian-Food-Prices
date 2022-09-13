@@ -51,7 +51,7 @@ with analyse_data:
        'Tilapia fish (epiya) fresh', 'Titus (frozen)', 'Tomato',
        'Vegetable oil:1 bottle', 'Wheat flour: prepacked (golden penny 2kg)',
        'Yam tuber'])    
-    
+    price_data.set_index("Date", inplace=True)
     st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
     line = pd.DataFrame(price_data[food_item])
     st.line_chart(line)
