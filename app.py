@@ -49,7 +49,7 @@ with dataset:
        'Vegetable oil:1 bottle', 'Wheat flour: prepacked (golden penny 2kg)',
        'Yam tuber'])    
     
-    st.subheader("Prices(₦) of"+ food_item + "(Jan 2017 - July 2022)")
+    st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
     line = pd.DataFrame(price_data[food_item])
     st.line_chart(line)
 
