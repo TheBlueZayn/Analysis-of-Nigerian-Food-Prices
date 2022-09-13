@@ -170,33 +170,45 @@ with geo_zones:
 
 with six_states:
     st.header("Comparing current prices (July 2022) of six food items accross six states")
-    fig, (ax1, ax2) = plt.subplots(1,2, figsize=(90,50))
+    fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(100,50))
     ax1.bar(current_price["State"], current_price["Beans brown,sold loose"])
-    ax1.set_title("Brown Beans", fontsize=70)
-    ax1.tick_params(size=20)
-    plt.xticks(fontsize=60)
-    plt.yticks(fontsize=60)
-
+    ax1.set_title("Brown Beans", fontsize=80)
+    ax1.tick_params(axis='x', labelsize=70)
+    ax1.tick_params(axis='y', labelsize=60)
+    # Second plot
     ax2.bar(current_price["State"], current_price["Bread sliced 500g"])
-    ax2.set_title("Bread (500g)", fontsize=70)
-    plt.xticks(fontsize=60)
-    plt.yticks(fontsize=60)
+    ax2.set_title("Bread (500g)", fontsize=80)
+    ax2.tick_params(axis='x', labelsize=70)
+    ax2.tick_params(axis='y', labelsize=60)
+    st.write(fig1)
 
-    # ax[0,2].bar(current_price["State"], current_price["Broken Rice (Ofada)"])
-    # ax[0,2].set_title("Ofada Rice", fontsize=40)
+    fig2, (ax3, ax4) = plt.subplots(1,2, figsize=(90,50))
+    # Thirdplot
+    ax3.bar(current_price["State"], current_price["Broken Rice (Ofada)"])
+    ax3.set_title("Ofada Rice", fontsize=80)
+    ax3.tick_params(axis='x', labelsize=70)
+    ax3.tick_params(axis='y', labelsize=60)
+    # Fourth plot
+    ax4.bar(current_price["State"], current_price["Gari white,sold loose"])
+    ax4.set_title("White Gaari", fontsize=80)
+    ax4.tick_params(axis='x', labelsize=70)
+    ax4.tick_params(axis='y', labelsize=60)
+    st.write(fig2)
 
-    # ax[1,0].bar(current_price["State"], current_price["Gari white,sold loose"])
-    # ax[1,0].set_title("White Gaari", fontsize=40)
+    # Fifth plot
+    fig3, (ax5, ax6) = plt.subplots(1,2, figsize=(90,50))
+    ax5.bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
+    ax5.set_title("Vegetable Oil", fontsize=80)
+    ax5.tick_params(axis='x', labelsize=70)
+    ax5.tick_params(axis='y', labelsize=60)
+    # Sixth plot
+    ax6.bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
+    ax6.set_title("Palm Oil", fontsize=80)
+    ax6.tick_params(axis='x', labelsize=70)
+    ax6.tick_params(axis='y', labelsize=60)
+    st.write(fig3)
 
-    # ax[1,1].bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
-    # ax[1,1].set_title("Vegetable Oil", fontsize=40)
-
-    # ax[1,2].bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
-    # ax[1,2].set_title("Palm Oil", fontsize=40)
-    # plt.xticks(fontsize=20)
-
-    #fig.text(0.15, 0.95, "Current Price (July 2022) of Six major Food Item in a State from each Geopolitical Zone", fontsize=50,fontweight="semibold")
-    st.write(fig)
+   
 
 
     
