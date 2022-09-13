@@ -31,7 +31,7 @@ with analyse_data:
     sel_col, disp_col = st.columns(2)
 
     food_item = sel_col.selectbox("Select the food item to analyse", options=[
-       'Agric eggs (medium size)', 'Agric eggs(medium size, price of one)',
+       'Agric eggs medium size', 'Agric eggs(medium size price of one)',
        'Beans brown,sold loose', 'Beans:white black eye. sold loose',
        'Beef Bone in', 'Beef,boneless', 'Bread sliced 500g',
        'Bread unsliced 500g', 'Broken Rice (Ofada)', 'Catfish (dried)',
@@ -54,7 +54,7 @@ with analyse_data:
     st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
     line = pd.DataFrame(price_data[food_item])
     st.line_chart(line)
-    
+
     # Show states with lowest and highest prices
     st.subheader("State with lowest and highest price of " + food_item)
     st.write(low_high[low_high["Food Item"] == food_item].set_index("Food Item"))
