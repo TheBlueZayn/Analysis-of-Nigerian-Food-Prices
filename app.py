@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 header = st.beta_container()
 dataset = st.beta_container()
@@ -11,7 +12,34 @@ with header:
 
 with dataset:
     st.header("About the dataset")
+
+# Load datasets
 price_data = pd.read_csv("prices.csv")
 st.write(price_data.head())
+low_high = pd.read_csv("lowest_highest")
+
+high = "Highest price is from " + low_high["Highest"]
+low = "Lowest price is from " + low_high["Lowest"]
+
+
+# defining variables
+max = price_data["Beef Bone in"].max()
+min = price_data["Beef Bone in"].min()
+price = price_data["Beef Bone in"].tail(1)[0]
+y = (max - min) / price
+
+# plot graph
+fig, ax = plt.subplots(figsize=(15,10))
+ax.plot(price_data['Beef Bone in'])
+plt.ylabel("Price in Naira (₦)", fontsize=15)
+plt.xlabel("Year", fontsize=15)
+fig.text(0.15, 0.85, "Beef Bone in (Jan 2017 - July 2022)", fontsize=18)
+fig.text(0.67, 0.17, high[4], fontsize=13)
+fig.text(0.67, 0.20, low[4], fontsize=13)
+fig.text(0.85, y, "₦ "+ str(price))
+for s in ['top', 'right']:
+    ax.spines[s].set_visible(False);
+# Show plot
+st.pyplot(fig)
 
 
