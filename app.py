@@ -22,8 +22,11 @@ st.write(price_data.head())
 st.write(low_high.head())
 
 
-    #defining variables
-def line_plot():
+
+
+#defining variables
+with header:
+#def line_plot():
     high = "Highest price is from " + low_high["Highest"]
     low = "Lowest price is from " + low_high["Lowest"]
     max = price_data["Beef Bone in"].max()
