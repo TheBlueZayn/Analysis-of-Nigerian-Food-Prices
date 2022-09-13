@@ -15,9 +15,11 @@ with dataset:
 
 # Load datasets
 price_data = pd.read_csv("prices.csv")
+st.write(price_data.head())
+
 # low_high = pd.read_csv("lowest_highest.csv")
 
-st.write(price_data.head())
+
 
 # defining variables
 # high = "Highest price is from " + low_high["Highest"]
