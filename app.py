@@ -5,8 +5,8 @@ header = st.beta_container()
 dataset = st.beta_container()
 
 with header:
-    st.title("""Analysis of Nigerian Food Prices 2022
-                By Zaynab Arowosegbe""")
+    st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
+    st.text("By Zaynab Arowosegbe")
     st.text("More Info on the analysis")
 
 with dataset:
