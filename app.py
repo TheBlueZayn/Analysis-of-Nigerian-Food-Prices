@@ -54,6 +54,8 @@ with analyse_data:
     st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
     line = pd.DataFrame(price_data[food_item])
     st.line_chart(line)
+    # Show states with lowest and highest prices
+    st.write(low_high[low_high["Food Item"] == food_item].set_index("Food Item"))
 
 
 
