@@ -174,9 +174,13 @@ with six_states:
     ax1.bar(current_price["State"], current_price["Beans brown,sold loose"])
     ax1.set_title("Brown Beans", fontsize=70)
     ax1.tick_params(size=20)
+    plt.xticks(fontsize=60)
+    plt.yticks(fontsize=60)
 
     ax2.bar(current_price["State"], current_price["Bread sliced 500g"])
     ax2.set_title("Bread (500g)", fontsize=70)
+    plt.xticks(fontsize=60)
+    plt.yticks(fontsize=60)
 
     # ax[0,2].bar(current_price["State"], current_price["Broken Rice (Ofada)"])
     # ax[0,2].set_title("Ofada Rice", fontsize=40)
