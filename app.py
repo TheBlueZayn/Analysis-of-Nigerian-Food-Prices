@@ -22,6 +22,7 @@ with dataset:
     st.write(price_data.head())
     st.write(low_high.head())
 
+    st.write("Prices of Beef Bone in (Jan 2017 - July 2022)")
     line = pd.DataFrame(price_data["Beef Bone in"])
     st.line_chart(line)
 
