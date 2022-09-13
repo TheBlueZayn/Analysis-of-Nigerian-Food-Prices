@@ -7,6 +7,9 @@ import pandas as pd
 header = st.container()
 dataset = st.container()
 analyse_data = st.container()
+geo_zones = st.container()
+six_states = st.container()
+causes  = st.container()
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.text("By Zaynab Arowosegbe")
@@ -57,6 +60,12 @@ with analyse_data:
     # Show states with lowest and highest prices
     st.subheader("State with lowest and highest price of " + food_item)
     st.write(low_high[low_high["Food Item"] == food_item].set_index("Food Item"))
+
+
+    # Comparing accresso geopolitical zones
+    with geo_zones:
+        st.header("Comparing prices of major food items accross geopolitical zones")
+    
 
 
 
