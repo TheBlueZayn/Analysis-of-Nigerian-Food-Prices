@@ -40,6 +40,6 @@ ax.plot(price_data['Beef Bone in'])
     # for s in ['top', 'right']:
     #     ax.spines[s].set_visible(False)
 # Show plot
-st.pyplot(fig)
+st.pyplot()
 
 
