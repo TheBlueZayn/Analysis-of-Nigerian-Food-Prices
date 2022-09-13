@@ -1,5 +1,5 @@
 import streamlit as st
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -13,29 +13,41 @@ geo_zones = st.container()
 six_states = st.container()
 causes  = st.container()
 
+# Load datasets
+# Data 1
+price_data = pd.read_csv("prices.csv")
+price_data["Date"] = pd.to_datetime(price_data["Date"], format="%d/%m/%Y")
+# Round values to 2 decimal place
+price_data= price_data.round(2)
+
+# Data 2
+low_high = pd.read_csv("lowest_highest.csv")
+
+# Data 3
+zones = pd.read_csv("zone_prices.csv")
+
+# Data 4
+current_price = pd.read_csv("current_price_six_states.csv")
+
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
-    st.text("By Zaynab Arowosegbe")
+    st.markdown("**By Zaynab Arowosegbe**")
     st.text("More Info on the analysis")
 
 with dataset:
     st.header("About the dataset")
     st.text("The dataset was gotten from nhuhedh")
 
-    # Load datasets
-    price_data = pd.read_csv("prices.csv")
-    price_data["Date"] = pd.to_datetime(price_data["Date"], format="%d/%m/%Y")
-    low_high = pd.read_csv("lowest_highest.csv")
-    
     # Show data
     st.write(price_data.head())
     st.write(low_high.head())
 
     
 with analyse_data:
-    st.title("Analysis of the various food items")
+    st.header("Analysis of the various food items")
     st.text("jxhiuih")
     sel_col, disp_col = st.columns(2)
+    price_data.set_index("Date", inplace=True)
 
     food_item = sel_col.selectbox("Select the food item to analyse", options=[
         'Agric eggs medium size', 'Agric eggs(medium size price of one)',
@@ -57,13 +69,55 @@ with analyse_data:
        'Tilapia fish (epiya) fresh', 'Titus (frozen)', 'Tomato',
        'Vegetable oil:1 bottle', 'Wheat flour: prepacked (golden penny 2kg)',
        'Yam tuber'])    
-    price_data.set_index("Date", inplace=True)
+    
+
+    # Create variables
+    dic = { 'Agric eggs medium size':0, 'Agric eggs(medium size price of one)':1,
+       'Beans brown,sold loose':2, 'Beans:white black eye. sold loose':3,
+       'Beef Bone in':4, 'Beef,boneless':5, 'Bread sliced 500g':6,
+       'Bread unsliced 500g':7, 'Broken Rice (Ofada)':8, 'Catfish (dried)':9,
+       'Catfish (obokun) fresh':10, 'Catfish (Smoked)':11, 'Chicken Feet':12,
+       'Chicken Wings':13, 'Dried Fish Sardine':14,
+       'Evaporated tinned milk carnation 170g':15,
+       'Evaporated tinned milk(peak) 170g':16, 'Frozen chicken':17,
+       'Gaari white, sold loose':18, 'Gaari yellow, sold loose':19,
+       'Groundnut oil, 1 bottle':20, 'Iced Sardine':21, 'Irish potato':22,
+       'Mackerel : frozen':23, 'Maize grain white,  sold loose':24,
+       'Maize grain yellow, sold loose':25, 'Mudfish (aro) fresh':26,
+       'Mudfish (dried)':27, 'Onion bulb':28, 'Palm oil: 1 bottle':29,
+       'Plantain (ripe)':30, 'Plantain (unripe)':31, 'Rice agric, sold loose':32,
+       'Rice local (ofada), sold loose':33, 'Rice Medium Grained':34,
+       'Rice (imported high quality),  sold loose':35, 'Sweet potato':36,
+       'Tilapia fish (epiya) fresh':37, 'Titus (frozen)':38, 'Tomato':29,
+       'Vegetable oil:1 bottle':40, 'Wheat flour: prepacked (golden penny 2kg)':41}
+
+    high = "Highest price is from " + low_high["Highest"]
+    low = "Lowest price is from " + low_high["Lowest"]
+    max = price_data[food_item].max()
+    min = price_data[food_item].min()
+    price = price_data[food_item].tail(1)[0]
+    y = (max - min) / price
+
+    # plot graph
     st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
-    line = pd.DataFrame(price_data[food_item])
-    st.line_chart(line)
-    # Show states with lowest and highest prices
-    st.subheader("State with lowest and highest price of " + food_item)
-    st.write(low_high[low_high["Food Item"] == food_item].set_index("Food Item"))
+    fig, ax = plt.subplots(figsize=(15,10))
+    ax.plot(price_data[food_item])
+    plt.ylabel("Price in Naira (₦)", fontsize=15)
+    plt.xlabel("Year", fontsize=15)
+    fig.text(0.67, 0.17, high[dic[food_item]], fontsize=15)
+    fig.text(0.67, 0.20, low[dic[food_item]], fontsize=15)
+    fig.text(0.85, y, "₦"+ str(price), fontsize=15)
+    for s in ['top', 'right']:
+        ax.spines[s].set_visible(False)
+    st.write(fig)    
+
+
+    # st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
+    # line = pd.DataFrame(price_data[food_item])
+    # st.line_chart(line)
+    # # Show states with lowest and highest prices
+    # st.subheader("State with lowest and highest price of " + food_item)
+    # st.write(low_high[low_high["Food Item"] == food_item].set_index("Food Item"))
 
 
     # Comparing accresso geopolitical zones
@@ -71,7 +125,6 @@ with geo_zones:
     st.header("Comparing current prices (July 2022) of major food items accross geopolitical zones")
 
     # Get column names from zones dataset
-    zones = pd.read_csv("zone_prices.csv")
     columns = ['Beans brown,sold loose', 'Beef (boneless)', 'Bread sliced 500g',
     'Gaari white (sold loose)', 'Onion bulb',
     'Palm oil: 1 bottle (specify bottle)', 'Rice local (sold loose)',
@@ -109,11 +162,37 @@ with geo_zones:
                format = [None, ",.2f"],
                prefix = [None, '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦']))
                 ])
-    fig.update_layout(title="Average Prices of Selected Food Items per Geopolitical Zones (July 2022)<br>(Highest Prices in Red)", width=750,height=650,)
+    fig.update_layout(width=1000, height=700,autosize=True)
+    fig.update_traces(cells_font=dict(size = 15))
+    st.subheader("Current Average Prices of Selected Food Items per Geopolitical Zones (July 2022)")
+    st.markdown("**(Highest Prices in Red)**")
     st.write(fig)
 
 with six_states:
     st.header("Comparing current prices (July 2022) of six food items accross six states")
+    fig, ax = plt.subplots(2,3, figsize=(25,13))
+    ax[0,0].bar(current_price["State"], current_price["Beans brown,sold loose"])
+    ax[0,0].title.set_text("Brown Beans")
+
+    ax[0,1].bar(current_price["State"], current_price["Bread sliced 500g"])
+    ax[0,1].title.set_text("Bread (500g)")
+
+    ax[0,2].bar(current_price["State"], current_price["Broken Rice (Ofada)"])
+    ax[0,2].title.set_text("Ofada Rice")
+
+    ax[1,0].bar(current_price["State"], current_price["Gari white,sold loose"])
+    ax[1,0].title.set_text("White Gaari")
+
+    ax[1,1].bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
+    ax[1,1].title.set_text("Vegetable Oil")
+
+    ax[1,2].bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
+    ax[1,2].title.set_text("Palm Oil")
+
+    fig.text(0.15, 0.95, "Current Price (July 2022) of Six major Food Item in a State from each Geopolitical Zone", fontsize=20,fontweight="semibold")
+    st.write(fig)
+
+
     
 with causes:
     st.header("What are the causes of foof inflation?")
