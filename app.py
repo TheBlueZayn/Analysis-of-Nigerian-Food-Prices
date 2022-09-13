@@ -213,7 +213,7 @@ with six_states:
 
     
 with causes:
-    st.header("What are the causes of foof inflation?")
+    st.header("What are the causes of food inflation?")
 
 
 
