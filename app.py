@@ -27,7 +27,7 @@ st.write(low_high.head())
 #defining variables
 with header:
     st.text("hcudhchd")
-def line_plot():
+#def line_plot():
     high = "Highest price is from " + low_high["Highest"]
     low = "Lowest price is from " + low_high["Lowest"]
     max = price_data["Beef Bone in"].max()
@@ -35,18 +35,18 @@ def line_plot():
     price = price_data["Beef Bone in"].tail(1)[0]
     y = (max - min) / price
     
-    # plot graph
-    fig, ax = plt.subplots(figsize=(15,10))
-    ax.plot(price_data['Beef Bone in'])
-    plt.ylabel("Price in Naira (₦)", fontsize=15)
-    plt.xlabel("Year", fontsize=15)
-    fig.text(0.15, 0.85, "Beef Bone in (Jan 2017 - July 2022)", fontsize=18)
-    fig.text(0.67, 0.17, high[4], fontsize=13)
-    fig.text(0.67, 0.20, low[4], fontsize=13)
-    fig.text(0.85, y, "₦ "+ str(price))
-    for s in ['top', 'right']:
-        ax.spines[s].set_visible(False)
-    # Show plot
-    st.pyplot()
+    # # plot graph
+    # fig, ax = plt.subplots(figsize=(15,10))
+    # ax.plot(price_data['Beef Bone in'])
+    # plt.ylabel("Price in Naira (₦)", fontsize=15)
+    # plt.xlabel("Year", fontsize=15)
+    # fig.text(0.15, 0.85, "Beef Bone in (Jan 2017 - July 2022)", fontsize=18)
+    # fig.text(0.67, 0.17, high[4], fontsize=13)
+    # fig.text(0.67, 0.20, low[4], fontsize=13)
+    # fig.text(0.85, y, "₦ "+ str(price))
+    # for s in ['top', 'right']:
+    #     ax.spines[s].set_visible(False)
+    # # Show plot
+    # st.pyplot()
 
 
