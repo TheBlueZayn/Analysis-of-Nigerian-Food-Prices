@@ -4,9 +4,9 @@ import pandas as pd
 
 
 
-header = st.beta_container()
-dataset = st.beta_container()
-analyse_data = st.beta_container()
+header = st.container()
+dataset = st.container()
+analyse_data = st.container()
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.text("By Zaynab Arowosegbe")
@@ -26,7 +26,7 @@ with dataset:
 with dataset:
     st.title("Analysis of the various food items")
     st.text("jxhiuih")
-    sel_col, disp_col = st.beta_columns(2)
+    sel_col, disp_col = st.columns(2)
 
     food_item = sel_col.selectbox("Select the food item to analyse", options=[
         'Agric eggs medium size', 'Agric eggs(medium size price of one)',
