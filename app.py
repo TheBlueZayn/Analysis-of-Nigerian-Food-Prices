@@ -16,8 +16,8 @@ with dataset:
 
     price_data = pd.read_csv("prices.csv")
     price_data["Date"] = pd.to_datetime(price_data["Date"])
-    df.set_index("Date", inplace=True)
-    
+    price_data.set_index("Date", inplace=True)
+
     low_high = pd.read_csv("lowest_highest.csv")
     st.write(price_data.head())
     st.write(low_high.head())
