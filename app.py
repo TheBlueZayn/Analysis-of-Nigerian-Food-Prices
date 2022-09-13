@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+
+
 header = st.beta_container()
 dataset = st.beta_container()
-
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.text("By Zaynab Arowosegbe")
@@ -13,11 +14,9 @@ with dataset:
     st.header("About the dataset")
 
     # Load datasets
-    price_data = pd.read_csv("prices.csv")
-    st.write(price_data.head())
-    low_high = pd.read_csv("lowest_highest.csv")
-
-
+price_data = pd.read_csv("prices.csv")
+low_high = pd.read_csv("lowest_highest.csv")
+st.write(price_data.head())
 
 # defining variables
 high = "Highest price is from " + low_high["Highest"]
