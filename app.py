@@ -72,7 +72,7 @@ with analyse_data:
     
 
     # Create variables
-    dic = { 'Agric eggs medium size':0, 'Agric eggs(medium size price of one)':1,
+    dic = {'Agric eggs medium size':0, 'Agric eggs(medium size price of one)':1,
        'Beans brown,sold loose':2, 'Beans:white black eye. sold loose':3,
        'Beef Bone in':4, 'Beef,boneless':5, 'Bread sliced 500g':6,
        'Bread unsliced 500g':7, 'Broken Rice (Ofada)':8, 'Catfish (dried)':9,
@@ -100,16 +100,16 @@ with analyse_data:
 
     # plot graph
     st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
-    fig, ax = plt.subplots(figsize=(15,10))
+    fig_line, ax = plt.subplots(figsize=(15,10))
     ax.plot(price_data[food_item])
     plt.ylabel("Price in Naira (₦)", fontsize=15)
     plt.xlabel("Year", fontsize=15)
-    fig.text(0.67, 0.17, high[dic[food_item]], fontsize=15)
-    fig.text(0.67, 0.20, low[dic[food_item]], fontsize=15)
-    fig.text(0.85, y, "₦"+ str(price), fontsize=15)
+    fig_line.text(0.67, 0.17, high[dic[food_item]], fontsize=15)
+    fig_line.text(0.67, 0.20, low[dic[food_item]], fontsize=15)
+    fig_line.text(0.85, y, "₦"+ str(price), fontsize=15)
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
-    st.write(fig)    
+    st.write(fig_line)    
 
 
     # st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
