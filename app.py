@@ -17,6 +17,7 @@ with dataset:
 # Load datasets
 
 price_data = pd.read_csv("prices.csv")
+price_data["Date"] = pd.to_datetime(price_data["Date"])
 low_high = pd.read_csv("lowest_highest.csv")
 st.write(price_data.head())
 st.write(low_high.head())
