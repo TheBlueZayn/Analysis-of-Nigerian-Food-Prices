@@ -1,6 +1,8 @@
 import streamlit as st
 #import matplotlib.pyplot as plt
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 
 
 
@@ -64,8 +66,13 @@ with analyse_data:
 
     # Comparing accresso geopolitical zones
     with geo_zones:
-        st.header("Comparing prices of major food items accross geopolitical zones")
+        st.header("Comparing current prices (July 2022) of major food items accross geopolitical zones")
+
+    with six_states:
+        st.header("Comparing current prices (July 2022) of six food items accross six states")
     
+    with causes:
+        st.header("What are the causes of foof inflation?")
 
 
 
