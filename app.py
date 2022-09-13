@@ -31,7 +31,7 @@ with analyse_data:
     sel_col, disp_col = st.columns(2)
 
     food_item = sel_col.selectbox("Select the food item to analyse", options=[
-        'Agric eggs medium size', 'Agric eggs(medium size price of one)',
+        'Agric eggs (medium size)', 'Agric eggs(medium size, price of one)',
        'Beans brown,sold loose', 'Beans:white black eye. sold loose',
        'Beef Bone in', 'Beef,boneless', 'Bread sliced 500g',
        'Bread unsliced 500g', 'Broken Rice (Ofada)', 'Catfish (dried)',
