@@ -14,7 +14,9 @@ with header:
 
 with dataset:
     st.header("About the dataset")
+    st.text("The dataset was gotten from nhuhedh")
 
+    # Load datasets
     price_data = pd.read_csv("prices.csv")
     price_data["Date"] = pd.to_datetime(price_data["Date"])
     low_high = pd.read_csv("lowest_highest.csv")
@@ -23,7 +25,7 @@ with dataset:
     st.write(low_high.head())
 
     
-with dataset:
+with analyse_data:
     st.title("Analysis of the various food items")
     st.text("jxhiuih")
     sel_col, disp_col = st.columns(2)
