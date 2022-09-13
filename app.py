@@ -96,7 +96,7 @@ with analyse_data:
     max = price_data[food_item].max()
     min = price_data[food_item].min()
     price = price_data[food_item].tail(1)[0]
-    y = (max - min) / price
+    y = ((max - min) / price)
 
     # plot graph
     st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
