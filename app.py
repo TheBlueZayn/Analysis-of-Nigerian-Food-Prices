@@ -12,9 +12,9 @@ with header:
 with dataset:
     st.header("About the dataset")
 
-# Load datasets
-price_data = pd.read_csv("prices.csv")
-st.write(price_data.head())
+    # Load datasets
+    price_data = pd.read_csv("prices.csv")
+    st.write(price_data.head())
 
 # low_high = pd.read_csv("lowest_highest.csv")
 
