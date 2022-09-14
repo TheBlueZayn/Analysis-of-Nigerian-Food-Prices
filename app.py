@@ -1,9 +1,10 @@
+from statistics import correlation
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-
+import seaborn as sns
 
 # Create subsections 
 header = st.container()
@@ -11,6 +12,7 @@ dataset = st.container()
 analyse_data = st.container()
 geo_zones = st.container()
 six_states = st.container()
+correlation = st.container()
 causes  = st.container()
 
 # Load datasets
@@ -60,7 +62,8 @@ with dataset:
     
 with analyse_data:
     st.header("Analysis of the various food items")
-    st.text("jxhiuih")
+    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive are annotated on the graph. ")
+    # Create input colums
     sel_col, disp_col = st.columns(2)
     price_data.set_index("Date", inplace=True)
 
@@ -106,15 +109,15 @@ with analyse_data:
        'Tilapia fish (epiya) fresh':37, 'Titus (frozen)':38, 'Tomato':29,
        'Vegetable oil:1 bottle':40, 'Wheat flour: prepacked (golden penny 2kg)':41}
 
-    high = "Highest price is from " + low_high["Highest"]
-    low = "Lowest price is from " + low_high["Lowest"]
+    high = "Most expensive in " + low_high["Highest"]
+    low = "Cheapest in " + low_high["Lowest"]
     max = price_data[food_item].max()
     min = price_data[food_item].min()
     price = price_data[food_item].tail(1)[0]
     y = ((max - min) / price)
 
     # plot graph
-    st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
+    st.subheader("National Price(₦) of "+ food_item + " (Jan 2017 - July 2022)")
     fig_line, ax = plt.subplots(figsize=(15,10))
     ax.plot(price_data[food_item])
     #ax.vlines(2020, ymin=min, ymax=max, color="k", alpha=0.5)
@@ -136,9 +139,9 @@ with analyse_data:
     # st.write(low_high[low_high["Food Item"] == food_item].set_index("Food Item"))
 
 
-    # Comparing accresso geopolitical zones
+# Comparing across geopolitical zones
 with geo_zones:
-    st.header("Comparing current prices (July 2022) of major food items accross geopolitical zones")
+    st.header("Comparing current prices (July 2022) of major food items across geopolitical zones")
 
     # Get column names from zones dataset
     columns = ['Beans brown,sold loose', 'Beef (boneless)', 'Bread sliced 500g',
@@ -182,19 +185,23 @@ with geo_zones:
     fig.update_traces(cells_font=dict(size = 15))
     #st.subheader("Current Average Prices of Selected Food Items per Geopolitical Zones (July 2022)")
     st.markdown("**(Highest Prices in Red)**")
+    st.markdown("The prices of **ten** food items are compared across the geopolitical zones, the highest prices are annotated in red.")
+    st.markdown("We can observe that food is generally more expensive in the **south east** with north-west coming in next. Food is cheaper in the **north central** except **yam** that is cheaper in North East (*Taraba is one of the yam-producing states in the country.*)")
+    st.markdown("The north central comprises the major food-producing states like Benue, Nassarawa, Platea and Niger.")
     st.write(fig)
 
 with six_states:
-    st.header("Comparing current prices (July 2022) of six food items accross six states")
-    fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(100,50))
+    st.header("Comparing current prices (July 2022) of six food items across six states")
+    st.markdown("The current price of **six** major food items of a state in the six geopolitical zones is visualised to emphasise the price inflation in the southeast state(**Imo**) compared to other states")
+    fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(90,50))
     ax1.bar(current_price["State"], current_price["Beans brown,sold loose"])
     ax1.set_title("Brown Beans", fontsize=80)
-    ax1.tick_params(axis='x', labelsize=70)
+    ax1.tick_params(axis='x', labelsize=80)
     ax1.tick_params(axis='y', labelsize=60)
     # Second plot
     ax2.bar(current_price["State"], current_price["Bread sliced 500g"])
     ax2.set_title("Bread (500g)", fontsize=80)
-    ax2.tick_params(axis='x', labelsize=70)
+    ax2.tick_params(axis='x', labelsize=80)
     ax2.tick_params(axis='y', labelsize=60)
     st.write(fig1)
 
@@ -202,12 +209,12 @@ with six_states:
     # Thirdplot
     ax3.bar(current_price["State"], current_price["Broken Rice (Ofada)"])
     ax3.set_title("Ofada Rice", fontsize=80)
-    ax3.tick_params(axis='x', labelsize=70)
+    ax3.tick_params(axis='x', labelsize=80)
     ax3.tick_params(axis='y', labelsize=60)
     # Fourth plot
     ax4.bar(current_price["State"], current_price["Gari white,sold loose"])
     ax4.set_title("White Gaari", fontsize=80)
-    ax4.tick_params(axis='x', labelsize=70)
+    ax4.tick_params(axis='x', labelsize=80)
     ax4.tick_params(axis='y', labelsize=60)
     st.write(fig2)
 
@@ -215,18 +222,34 @@ with six_states:
     fig3, (ax5, ax6) = plt.subplots(1,2, figsize=(90,50))
     ax5.bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
     ax5.set_title("Vegetable Oil", fontsize=80)
-    ax5.tick_params(axis='x', labelsize=70)
+    ax5.tick_params(axis='x', labelsize=80)
     ax5.tick_params(axis='y', labelsize=60)
     # Sixth plot
     ax6.bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
     ax6.set_title("Palm Oil", fontsize=80)
-    ax6.tick_params(axis='x', labelsize=70)
+    ax6.tick_params(axis='x', labelsize=80)
     ax6.tick_params(axis='y', labelsize=60)
     st.write(fig3)
 
    
-
-
+with correlation:
+    st.header("What are the correlations among the various food item?")
+    st.markdown("Correlation is a **statistical measure** that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate).")
+    st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation(they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation(if one increases, the other decreases, *the darkest shade*).")
+    st.markdown("From the heatmap below that augments the correlation matrix below, we can observe that:")
+    st.markdown("- Positive correlation between both forms of bread, beans, gaari and rice.")
+    st.markdown("- Positive correlation between groundnut oil, palm oil and vegetable oil.")
+    st.markdown("- Positive correlation between Irish potato, palm oil and veg oil.")
+    st.markdown("- Positive correlation between milk, bread, veg oil and wheat flour.")
+    st.markdown("- Positive correlation between maize and vegetable oil.")
+    st.markdown("- Negative correlation between dried mudfish, smoked catfish and dried fish.")
+    st.markdown("- Negative correlation between iced sardine, and catfish.")
+    st.markdown("- Negative correlation between Iced sardine and dried fish sardine.")
+    #st.markdown("- ")
+    corr = price_data.corr()
+    fig, ax = plt.subplots(figsize=(20,15))
+    sns.heatmap(corr, ax=ax)
+    st.write(fig)
     
 with causes:
     st.header("What are the causes of food inflation?")
