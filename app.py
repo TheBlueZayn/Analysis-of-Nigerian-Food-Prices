@@ -192,7 +192,7 @@ with geo_zones:
 with six_states:
     st.header("Comparing current prices (July 2022) of six food items across six states")
     st.markdown("The current price of **six** major food items of a state in the six geopolitical zones is visualised to emphasise the price inflation in the southeast state(**Imo**) compared to other states")
-    fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(90,50))
+    fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
     ax1.bar(current_price["State"], current_price["Beans brown,sold loose"])
     ax1.set_title("Brown Beans", fontsize=80)
     ax1.tick_params(axis='x', labelsize=80)
