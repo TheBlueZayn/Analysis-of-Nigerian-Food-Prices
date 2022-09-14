@@ -195,39 +195,39 @@ with six_states:
     fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
     ax1.bar(current_price["State"], current_price["Beans brown,sold loose"])
     ax1.set_title("Brown Beans", fontsize=80)
-    ax1.tick_params(axis='x', labelsize=80)
-    ax1.tick_params(axis='y', labelsize=60)
+    ax1.tick_params(axis='x', labelsize=40)
+    ax1.tick_params(axis='y', labelsize=40)
     # Second plot
     ax2.bar(current_price["State"], current_price["Bread sliced 500g"])
     ax2.set_title("Bread (500g)", fontsize=80)
-    ax2.tick_params(axis='x', labelsize=80)
-    ax2.tick_params(axis='y', labelsize=60)
+    ax2.tick_params(axis='x', labelsize=40)
+    ax2.tick_params(axis='y', labelsize=40)
     st.write(fig1)
 
-    fig2, (ax3, ax4) = plt.subplots(1,2, figsize=(90,50))
+    fig2, (ax3, ax4) = plt.subplots(1,2, figsize=(40,25))
     # Thirdplot
     ax3.bar(current_price["State"], current_price["Broken Rice (Ofada)"])
     ax3.set_title("Ofada Rice", fontsize=80)
-    ax3.tick_params(axis='x', labelsize=80)
-    ax3.tick_params(axis='y', labelsize=60)
+    ax3.tick_params(axis='x', labelsize=40)
+    ax3.tick_params(axis='y', labelsize=40)
     # Fourth plot
     ax4.bar(current_price["State"], current_price["Gari white,sold loose"])
     ax4.set_title("White Gaari", fontsize=80)
-    ax4.tick_params(axis='x', labelsize=80)
-    ax4.tick_params(axis='y', labelsize=60)
+    ax4.tick_params(axis='x', labelsize=40)
+    ax4.tick_params(axis='y', labelsize=40)
     st.write(fig2)
 
     # Fifth plot
-    fig3, (ax5, ax6) = plt.subplots(1,2, figsize=(90,50))
+    fig3, (ax5, ax6) = plt.subplots(1,2, figsize=(40,25))
     ax5.bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
     ax5.set_title("Vegetable Oil", fontsize=80)
-    ax5.tick_params(axis='x', labelsize=80)
+    ax5.tick_params(axis='x', labelsize=40)
     ax5.tick_params(axis='y', labelsize=60)
     # Sixth plot
     ax6.bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
     ax6.set_title("Palm Oil", fontsize=80)
-    ax6.tick_params(axis='x', labelsize=80)
-    ax6.tick_params(axis='y', labelsize=60)
+    ax6.tick_params(axis='x', labelsize=40)
+    ax6.tick_params(axis='y', labelsize=40)
     st.write(fig3)
 
    
