@@ -1,4 +1,3 @@
-from statistics import correlation
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -12,7 +11,7 @@ dataset = st.container()
 analyse_data = st.container()
 geo_zones = st.container()
 six_states = st.container()
-correlation = st.container()
+correl = st.container()
 causes  = st.container()
 
 # Load datasets
@@ -232,7 +231,7 @@ with six_states:
     st.write(fig3)
 
    
-with correlation:
+with correl:
     st.header("What are the correlations among the various food item?")
     st.markdown("Correlation is a **statistical measure** that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate).")
     st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation(they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation(if one increases, the other decreases, *the darkest shade*).")
