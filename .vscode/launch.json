@@ -8,20 +8,12 @@
             "name": "Python: Module",
             "type": "python",
             "request": "launch",
-            "module": "pipreqs",
-            "justMyCode": true
-
-        },
-        {
-            "name": "Python: Module",
-            "type": "python",
-            "request": "launch",
             "module": "streamlit",
             "justMyCode": true,
             "args": [
                 "run",
                 "${file}"
-            ],
+            ]
         }
     ]
 }
