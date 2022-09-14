@@ -32,11 +32,26 @@ current_price = pd.read_csv("current_price_six_states.csv")
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.markdown("**By Zaynab Arowosegbe**")
-    st.text("More Info on the analysis")
+    st.markdown("Nigeria has been facing food price inflation for the past few years and it is no news that the country has been fighting insecurity in form of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities. ")
+    st.markdown("In this report, I would analyse the prices of 42 food items, their average prices, prices across the states in the country and the price changes from January 2017 to July 2022 and would be answering the following questions:")
+    st.markdown("- What has been the trend of the prices across the years?")
+    st.markdown("- What is the current average national price and what states have the lowest and highest price?")
+    st.markdown("- What are the variations across the six geopolitical zones?")
+    st.markdown("- Are there correlations among some of the food prices?")
+    st.markdown("- What has been the influence of covid19 pandemic on food prices?")
+    st.markdown("- What states have the most attacks and what has been the death count in the last few years?")
+    st.markdown("- Has this insecurity led to inflation of prices across the states? especially in the southern region where the prices are higher.")
+    #st.markdown("")
+    #st.markdown("")
+    #st.markdown("")
+
+
 
 with dataset:
     st.header("About the dataset")
-    st.text("The dataset was gotten from nhuhedh")
+    st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics, which collects and publishes food prices across the country every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
+    st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data.")
+    st.markdown("Below are frist five rows from tables of the split dataset")
 
     # Show data
     st.write(price_data.head())
@@ -102,6 +117,7 @@ with analyse_data:
     st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
     fig_line, ax = plt.subplots(figsize=(15,10))
     ax.plot(price_data[food_item])
+    #ax.vlines(2020, ymin=min, ymax=max, color="k", alpha=0.5)
     plt.ylabel("Price in Naira (₦)", fontsize=15)
     plt.xlabel("Year", fontsize=15)
     fig_line.text(0.67, 0.17, high[dic[food_item]], fontsize=15)
