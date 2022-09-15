@@ -299,26 +299,26 @@ with correl:
 with causes:
     st.header("What are the causes of food inflation?")
     st.markdown("hedee")
+    st.subheader("States with the most frequent attacks (2013-2021)")
     # Plot map
-    fig = px.scatter_geo(
+    fig_geo = px.scatter_geo(
     attack, lat="lat", lon="lon",
     size="deaths", 
     color="attacks",
     hover_name="state",
     fitbounds="locations"
     )
-    fig.update_layout(title="(Hover for State name)<br>Size of circle represents number of deaths")
-    fig.update_geos(
+    fig_geo.update_layout(title="(Hover for State name)<br>Size of circle represents number of deaths")
+    fig_geo.update_geos(
     visible=False, resolution=110,
     showcountries=True, countrycolor="Black"
     )
-    st.subheader("States with the most frequent attacks (2013-2021)")
-    st.write(fig)
+    st.write(fig_geo)
 
     st.subheader("Most Attacked States(2013-2021)")
-    fig = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
-    fig.update_layout(width=900)
-    st.write(fig)
+    fig_bar = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
+    fig_bar.update_layout(width=900)
+    st.write(fig_bar)
     
     st.subheader("Economic Indicators in the Last Three Years")
     st.write(economic)
