@@ -12,12 +12,14 @@ analyse_data = st.container()
 geo_zones = st.container()
 six_states = st.container()
 correl = st.container()
+covid = st.container()
 causes  = st.container()
 
 # Load datasets
 # Data 1
 price_data = pd.read_csv("prices.csv")
 price_data["Date"] = pd.to_datetime(price_data["Date"], format="%d/%m/%Y")
+price_data = price_data.round(2)
 # Round values to 2 decimal place
 price_data= price_data.round(2)
 
@@ -29,6 +31,9 @@ zones = pd.read_csv("zone_prices.csv")
 
 # Data 4
 current_price = pd.read_csv("current_price_six_states.csv")
+
+# Data 5 
+m_y = pd.read_csv("MoM_YoY.csv")
 
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
@@ -42,9 +47,7 @@ with header:
     st.markdown("- What has been the influence of covid19 pandemic on food prices?")
     st.markdown("- What states have the most attacks and what has been the death count in the last few years?")
     st.markdown("- Has this insecurity led to inflation of prices across the states? especially in the southern region where the prices are higher.")
-    #st.markdown("")
-    #st.markdown("")
-    #st.markdown("")
+
 
 
 
