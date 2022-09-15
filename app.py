@@ -1,4 +1,3 @@
-from turtle import color
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -308,7 +307,7 @@ with causes:
     hover_name="state",
     fitbounds="locations"
     )
-    fig_geo.update_layout(title="jjj(Hover for State name)<br>Size of circle represents number of deaths")
+    fig_geo.update_layout(title="(Hover for State name)<br>Size of circle represents number of attacks")
     fig_geo.update_geos(
     visible=False, resolution=110,
     showcountries=True, countrycolor="Black"
