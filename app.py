@@ -303,12 +303,12 @@ with causes:
     # Plot map
     fig_geo = px.scatter_geo(
     attack, lat="lat", lon="lon",
-    size="deaths", 
-    color="attacks",
+    size="attacks", 
+    color="deaths",
     hover_name="state",
     fitbounds="locations"
     )
-    fig_geo.update_layout(title="(Hover for State name)<br>Size of circle represents number of deaths")
+    fig_geo.update_layout(title="jjj(Hover for State name)<br>Size of circle represents number of deaths")
     fig_geo.update_geos(
     visible=False, resolution=110,
     showcountries=True, countrycolor="Black"
