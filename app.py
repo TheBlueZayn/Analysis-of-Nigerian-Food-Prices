@@ -319,7 +319,7 @@ with causes:
     fig_bar.update_layout(width=900)
     st.write(fig_bar)
     
-    st.subheader("Economic Indicators in the Last Three Years")
+    st.subheader("Economic Indicators for the Last Three Years")
     st.write(economic)
 
 
