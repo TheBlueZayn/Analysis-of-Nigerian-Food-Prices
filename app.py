@@ -289,6 +289,7 @@ with correl:
     st.markdown("- Milk, bread, veg oil and wheat flour.")
     st.markdown("- Maize and vegetable oil.")
     st.markdown("Negative correlation between")
+    st.markdown("- Fresh mudfish and dried mudfish")
     st.markdown("- Dried mudfish, smoked catfish and dried fish.")
     st.markdown("- Iced sardine, and catfish.")
     st.markdown("- Iced sardine and dried fish sardine.")
