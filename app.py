@@ -1,3 +1,4 @@
+from turtle import color
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -19,9 +20,9 @@ causes  = st.container()
 # Data 1
 price_data = pd.read_csv("prices.csv")
 price_data["Date"] = pd.to_datetime(price_data["Date"], format="%d/%m/%Y")
-price_data = price_data.round(2)
+
 # Round values to 2 decimal place
-price_data= price_data.round(2)
+#price_data= price_data.round(2)
 
 # Data 2
 low_high = pd.read_csv("lowest_highest.csv")
@@ -195,42 +196,67 @@ with geo_zones:
 with six_states:
     st.header("Comparing current prices (July 2022) of six food items across six states")
     st.markdown("The current price of **six** major food items of a state in the six geopolitical zones is visualised to emphasise the price inflation in the southeast state(**Imo**) compared to other states")
+    # First plot
     fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
-    ax1.bar(current_price["State"], current_price["Beans brown,sold loose"])
+    color_1 = ["grey" for i in range(6)]
+    color_1[2] = color_1[3] = "#1f77b4"
+    ax1.bar(current_price["State"], current_price["Beans brown,sold loose"], color = color_1)
     ax1.set_title("Brown Beans", fontsize=80)
     ax1.tick_params(axis='x', labelsize=40)
     ax1.tick_params(axis='y', labelsize=40)
+    for s in ['top', 'right']:
+        ax1.spines[s].set_visible(False)
     # Second plot
-    ax2.bar(current_price["State"], current_price["Bread sliced 500g"])
+    color_2 = ["grey" for i in range(6)]
+    color_2[2] = color_1[3] = "#1f77b4"
+    ax2.bar(current_price["State"], current_price["Bread sliced 500g"], color=color_2)
     ax2.set_title("Bread (500g)", fontsize=80)
     ax2.tick_params(axis='x', labelsize=40)
     ax2.tick_params(axis='y', labelsize=40)
+    for s in ['top', 'right']:
+        ax2.spines[s].set_visible(False)
     st.write(fig1)
 
     fig2, (ax3, ax4) = plt.subplots(1,2, figsize=(40,25))
     # Thirdplot
-    ax3.bar(current_price["State"], current_price["Broken Rice (Ofada)"])
-    ax3.set_title("Ofada Rice", fontsize=80)
+    color_3 = ["grey" for i in range(6)]
+    color_3[0] = color_3[3] = "#1f77b4"
+    ax3.bar(current_price["State"], current_price["Rice local sold loose"], color=color_3)
+    ax3.set_title("Local Rice", fontsize=80)
     ax3.tick_params(axis='x', labelsize=40)
     ax3.tick_params(axis='y', labelsize=40)
+    for s in ['top', 'right']:
+        ax3.spines[s].set_visible(False)
     # Fourth plot
-    ax4.bar(current_price["State"], current_price["Gari white,sold loose"])
+    color_4 = ["grey" for i in range(6)]
+    color_4[4] = color_4[3] = "#1f77b4"
+    ax4.bar(current_price["State"], current_price["Gari white,sold loose"], color=color_4)
     ax4.set_title("White Gaari", fontsize=80)
     ax4.tick_params(axis='x', labelsize=40)
     ax4.tick_params(axis='y', labelsize=40)
+    for s in ['top', 'right']:
+        ax4.spines[s].set_visible(False)
     st.write(fig2)
 
     # Fifth plot
     fig3, (ax5, ax6) = plt.subplots(1,2, figsize=(40,25))
-    ax5.bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"])
+    color_5 = ["grey" for i in range(6)]
+    color_5[2] = color_5[3] = "#1f77b4"
+    ax5.bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"], color=color_5)
     ax5.set_title("Vegetable Oil", fontsize=80)
     ax5.tick_params(axis='x', labelsize=40)
-    ax5.tick_params(axis='y', labelsize=60)
+    ax5.tick_params(axis='y', labelsize=40)
+    for s in ['top', 'right']:
+        ax5.spines[s].set_visible(False)
     # Sixth plot
-    ax6.bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"])
+    color_6 = ["grey" for i in range(6)]
+    color_6[2] = color_6[3] = "#1f77b4"
+    ax6.bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"], color=color_6)
     ax6.set_title("Palm Oil", fontsize=80)
     ax6.tick_params(axis='x', labelsize=40)
     ax6.tick_params(axis='y', labelsize=40)
+    for s in ['top', 'right']:
+        ax6.spines[s].set_visible(False)
     st.write(fig3)
 
    
