@@ -194,8 +194,13 @@ with geo_zones:
     st.write(fig)
 
 with six_states:
-    st.header("Comparing current prices (July 2022) of six food items across six states")
-    st.markdown("The current price of **six** major food items of a state in the six geopolitical zones is visualised to emphasise the price inflation in the southeast state(**Imo**) compared to other states")
+    st.header("Current percentage monthly and yearly increase in the price of food items on a national level")
+    st.markdown("The top 5 food items that increased the **most** from last month and their corresponding yearly increase.")
+    st.write(m_y.head())
+    st.markdown("The top 5 food items that increased the **least** from last month and their corresponding yearly increase.")
+    st.write(m_y.tail())
+    st.subheader("Comparing current prices (July 2022) of six food items across six states")
+    st.markdown("The current price of **six** major food items(*from high and low percentage increase*) of a state in the six geopolitical zones is visualised to emphasise the price inflation in the southeast state(**Imo**) compared to other states")
     # First plot
     fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
     color_1 = ["grey" for i in range(6)]
@@ -208,7 +213,7 @@ with six_states:
         ax1.spines[s].set_visible(False)
     # Second plot
     color_2 = ["grey" for i in range(6)]
-    color_2[2] = color_1[3] = "#1f77b4"
+    color_2[2] = color_2[3] = "#1f77b4"
     ax2.bar(current_price["State"], current_price["Bread sliced 500g"], color=color_2)
     ax2.set_title("Bread (500g)", fontsize=80)
     ax2.tick_params(axis='x', labelsize=40)
