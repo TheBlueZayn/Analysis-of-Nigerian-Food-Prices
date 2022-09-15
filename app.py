@@ -36,6 +36,9 @@ current_price = pd.read_csv("current_price_six_states.csv")
 # Data 5 
 m_y = pd.read_csv("MoM_YoY.csv")
 
+# Data 6
+attacks = pd.read_csv("attacks_deaths.csv")
+
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.markdown("**By Zaynab Arowosegbe**")
@@ -200,7 +203,8 @@ with six_states:
     st.markdown("The top 5 food items that increased the **least** from last month and their corresponding yearly increase.")
     st.write(m_y.tail())
     st.subheader("Comparing current prices (July 2022) of six food items across six states")
-    st.markdown("The current price of **six** major food items(*from high and low percentage increase*) of a state in the six geopolitical zones is visualised to emphasise the price inflation in the southeast state(**Imo**) compared to other states")
+    st.markdown("The current price of **six** major food items (*from high and low percentage increase*) of a state in the six geopolitical zones is visualised")
+    st.markdown("This emphasises the price inflation in the southeast state (**Imo**) compared to other states like **Borno** that sells at the least price")
     # First plot
     fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
     color_1 = ["grey" for i in range(6)]
@@ -266,7 +270,7 @@ with six_states:
 
    
 with correl:
-    st.header("What are the correlations among the various food item?")
+    st.header("What are the correlations among the various food items?")
     st.markdown("Correlation is a **statistical measure** that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate).")
     st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation(they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation(if one increases, the other decreases, *the darkest shade*).")
     st.markdown("From the heatmap below that augments the correlation matrix below, we can observe that:")
@@ -286,6 +290,19 @@ with correl:
     
 with causes:
     st.header("What are the causes of food inflation?")
+    fig = px.scatter_geo(
+    attack, lat="lat", lon="lon",
+    size="deaths", 
+    color="attacks",
+    hover_name="state",
+    fitbounds="locations"
+    )
+    fig.update_layout(title="Most Attacked States in Nigeria from 2013 - 2021<br>(Hover for State name<br>and more details.)")
+    fig.update_geos(
+    visible=False, resolution=110,
+    showcountries=True, countrycolor="Black"
+    )
+    st.write(fig)
 
 
 
