@@ -42,6 +42,9 @@ attack = pd.read_csv("attacks_deaths .csv")
 # Data 7
 most_attacked= attack.sort_values(by=['attacks'], ascending=False)[:10]
 
+# Data 8
+economic = pd.read_csv("economic-indicators.csv")
+
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.markdown("**By Zaynab Arowosegbe**")
@@ -296,6 +299,7 @@ with correl:
 with causes:
     st.header("What are the causes of food inflation?")
     st.markdown("hedee")
+    # Plot map
     fig = px.scatter_geo(
     attack, lat="lat", lon="lon",
     size="deaths", 
@@ -303,17 +307,21 @@ with causes:
     hover_name="state",
     fitbounds="locations"
     )
-    fig.update_layout(title="Attacks in Nigeria from 2013 - 2021<br>(Hover for State name)<br>Size of circle represents number of deaths")
+    fig.update_layout(title="(Hover for State name)<br>Size of circle represents number of deaths")
     fig.update_geos(
     visible=False, resolution=110,
     showcountries=True, countrycolor="Black"
     )
+    st.subheader("States with the most frequent attacks (2013-2021)")
     st.write(fig)
 
     st.subheader("Most Attacked States(2013-2021)")
     fig = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
     fig.update_layout(width=900)
     st.write(fig)
+    
+    st.subheader("Economic Indicators in the Last Three Years")
+    st.write(economic)
 
 
 
