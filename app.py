@@ -202,6 +202,8 @@ with geo_zones:
 with six_states:
     st.header("Current percentage monthly and yearly increase in the price of food items on a national level")
     st.markdown("The top 5 food items that increased the **most** from last month and their corresponding yearly increase.")
+    st.markdown("- **MoM** = Month on Month")
+    st.markdown("- **YoY** = Year on Year")
     st.write(m_y.head())
     st.markdown("The top 5 food items that increased the **least** from last month and their corresponding yearly increase.")
     st.write(m_y.tail())
@@ -301,15 +303,16 @@ with causes:
     hover_name="state",
     fitbounds="locations"
     )
-    fig.update_layout(title="Attacks in Nigeria from 2013 - 2021<br>(Hover for State name)<br>Size of circle represents number of deaths", width=600, height=600)
+    fig.update_layout(title="Attacks in Nigeria from 2013 - 2021<br>(Hover for State name)<br>Size of circle represents number of deaths")
     fig.update_geos(
     visible=False, resolution=110,
     showcountries=True, countrycolor="Black"
     )
     st.write(fig)
 
-    st.markdown("Most Attacked States(2013-2021)")
+    st.subheader("Most Attacked States(2013-2021)")
     fig = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
+    fig.update_layout(width=900)
     st.write(fig)
 
 
