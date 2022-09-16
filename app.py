@@ -271,9 +271,14 @@ with six_states:
    
 with correl:
     st.header("What are the correlations among the various food items?")
-    st.markdown("Correlation is a **statistical measure** that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate).")
-    st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation(they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation(if one increases, the other decreases, *the darkest shade*).")
-    st.markdown("From the heatmap below that augments the correlation matrix below, we can observe that:")
+    st.markdown("Correlation is a **statistical measure** that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate). A heatmap is used to visualise the correlation matrix. ")
+    corr = price_data.corr()
+    fig, ax = plt.subplots(figsize=(20,15))
+    sns.heatmap(corr, ax=ax)
+    st.write(fig)
+
+    st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation (they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation (if one increases, the other decreases, *the darkest shade*).")
+    st.markdown("From the visualisation, we can observe that:")
     st.markdown("The major correlations are listed below")
     st.markdown("Positive correlation between")
     st.markdown("- Both forms of bread, beans, gaari and maaize.")
@@ -288,13 +293,12 @@ with correl:
     st.markdown("- Iced sardine, and catfish.")
     st.markdown("- Iced sardine and dried fish sardine.")
     
-    corr = price_data.corr()
-    fig, ax = plt.subplots(figsize=(20,15))
-    sns.heatmap(corr, ax=ax)
-    st.write(fig)
+
 
 with causes:
     st.header("What are the causes of food inflation?")
+    st.markdown("From a publication by [premium times](https://www.premiumtimesng.com/agriculture/agric-news/540069-five-reasons-food-prices-remain-high-in-nigeria-in-2022.html), the five major reasons food remains high in Nigeria in 2022 are;")
+    
 
     # Covid 19 influence
     st.subheader("Effect of Covid19 on Nigerian Food Prices")
