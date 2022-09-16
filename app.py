@@ -300,9 +300,66 @@ with correl:
 
 with causes:
     st.header("What are the causes of food inflation?")
+
+    # Covid 19 influence
     st.subheader("Effect of Covid19 on Nigerian Food Prices")
+    st.markdown("On a general scale, all the food prices had a rise in **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
+    st.markdown("- White and yellow gaari")
+    st.markdown("- White and yellow maize")
+    st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
+    st.markdown("- Vegetable oil, groundnut oil and Palm oil")
+    st.markdown("We can observe that they are majorly grains, why is this though?")
+    st.markdown("Their line plots are shown below")
     st.markdown("hedee")
     st.subheader("States with the most frequent attacks (2013-2021)")
+
+    # Plot line plot
+    fig_cov1, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
+    ax1.plot(df["Beans brown,sold loose"], label="Brown Beans")
+    ax1.plot(df["Beans:white black eye. sold loose"], label="White Beans")
+    ax1.axvline("2020-03-31",color ='grey', lw = 0.5, alpha = 0.75)
+    ax1.text("2020-04-30", 230, "March 2020")
+    for s in ['top', 'right']:
+         ax1.spines[s].set_visible(False)
+    ax1.title.set_text("Covid19 Pandemic Influence on Price of Beans")
+    ax1.legend()
+
+    ax2.plot(df["Maize grain white,  sold loose"], label="White Maize")
+    ax2.plot(df["Maize grain yellow, sold loose"], label="Yellow Maize")
+    ax2.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
+    ax2.text("2019-12-31", 129, "November 2019")
+    for s in ['top', 'right']:
+      ax2.spines[s].set_visible(False)
+    ax2.title.set_text("Covid19 Pandemic Influence on Price of Maize")
+    ax2.legend()
+    st.write(fig_cov1)
+
+
+    fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
+    ax1.plot(df["Rice agric, sold loose"], label="Agric Rice")
+    ax1.plot(df["Rice local (ofada), sold loose"], label="Ofada Rice")
+    ax1.plot(df["Rice Medium Grained"], label="Medium Grained Rice")
+    ax1.plot(df["Broken Rice (Ofada)"], label="Broken Rice")
+    ax1.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
+    ax1.text("2019-12-31", 260, "November 2019")
+    for s in ['top', 'right']:
+         ax1.spines[s].set_visible(False)
+    ax1.title.set_text("Covid19 Pandemic influence on Price of Rice")
+    ax1.legend()
+
+    ax2.plot(df["Vegetable oil:1 bottle"], label="Vegetable Oil")
+    ax2.plot(df["Palm oil: 1 bottle"], label="Palm Oil")
+    ax2.plot(df["Groundnut oil, 1 bottle"], label="Groundnut Oil")
+    ax2.axvline("2020-01-31",color ='grey', lw = 0.5, alpha = 0.75)
+    ax2.text("2020-02-28", 400, "January 2020")
+    for s in ['top', 'right']:
+         ax2.spines[s].set_visible(False)
+    ax2.title.set_text("Covid19 Pandemic influence on Price of Cooking Oil")
+    ax2.legend()
+    st.write(fig_cov2)
+
+
+    # Attacks
     # Plot map
     fig_geo = px.scatter_geo(
     attack, lat="lat", lon="lon",
