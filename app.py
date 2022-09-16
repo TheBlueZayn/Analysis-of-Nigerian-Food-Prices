@@ -278,20 +278,19 @@ with correl:
     st.write(fig)
 
     st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation (they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation (if one increases, the other decreases, *the darkest shade*).")
-    st.markdown("From the visualisation, we can observe that:")
-    st.markdown("The major correlations are listed below")
+    st.markdown("From the visualisation, we can observe a:")
     st.markdown("**Positive correlation between**")
-    st.markdown("- Both forms of bread, beans, gaari and maaize.")
+    st.markdown("- Both forms of bread, beans, gaari and maaize")
     st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
-    st.markdown("- Groundnut oil, palm oil and vegetable oil.")
-    st.markdown("- Irish potato, palm oil and vegetable oil.")
-    st.markdown("- Milk, bread, veg oil and wheat flour.")
-    st.markdown("- Maize and vegetable oil.")
+    st.markdown("- Groundnut oil, palm oil and vegetable oil")
+    st.markdown("- Irish potato, palm oil and vegetable oil")
+    st.markdown("- Milk, bread, veg oil and wheat flour")
+    st.markdown("- Maize and vegetable oil")
     st.markdown("**Negative correlation between**")
     st.markdown("- Fresh mudfish and dried mudfish")
-    st.markdown("- Dried mudfish, smoked catfish and dried fish.")
+    st.markdown("- Dried mudfish, smoked catfish and dried fish")
     st.markdown("- Iced sardine, and catfish.")
-    st.markdown("- Iced sardine and dried fish sardine.")
+    st.markdown("- Iced sardine and dried fish sardine")
     
 
 
@@ -308,13 +307,13 @@ with causes:
 
     # Covid 19 influence
     st.subheader("Effect of Covid19 pandemic")
-    st.markdown("On a general scale, all the food prices had a rise in **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
+    st.markdown("Introduce covid19")
+    st.markdown("On a general scale, all the food prices had a rise from **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
     st.markdown("- White and yellow gaari")
     st.markdown("- White and yellow maize")
     st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
     st.markdown("- Vegetable oil, groundnut oil and Palm oil")
-    st.markdown("We can observe that they are majorly grains, why is this though?")
-    st.markdown("Their line plots are shown below")
+    st.markdown("It was also observe that they were majorly grains and their line plots are shown below")
     #st.markdown("")
 
     # Plot line plot
@@ -365,8 +364,7 @@ with causes:
 
     # Attacks
     st.subheader("Influence of Insecurities in the Country")
-    st.markdown("In Nigeria, the leading producing states include: Niger, Kano, Jigawa, Zamfara,Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe States (NAERL, 2011)")
-    st.markdown("The number of attacks in each state in the last 9 years is visualised")
+    st.markdown("In Nigeria, the leading food producing states include: Niger, Kano, Jigawa, Zamfara,Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe States (NAERL, 2011) and the number of attacks in each state in the last 9 years is visualised")
     #st.markdown("**States with the most frequent attacks (2013-2021)**")
     # Plot map
     fig_geo = px.scatter_geo(
@@ -387,19 +385,22 @@ with causes:
     fig_bar = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
     fig_bar.update_layout(width=900)
     st.write(fig_bar)
-    st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) In Borno, the following food items are sown maize, yam, cassava, cowpea, sorghum, millet, sweet potato and rice. While millet, sorghum, and maize are sown in Zamfara")
+    st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states")
     st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
     
 
     # Economic indicators
-    st.subheader("Economic Indicators for the Last Three Years")
-    st.markdown("An economic indicator is a metric used to assess, measure, and evaluate the overall state of health of the macroeconomy.")
+    st.subheader("Economic Indicators")
+    st.markdown("An economic indicator is a metric used to assess, measure, and evaluate the overall state of health of the economy at large.")
+    st.markdown("The economic indicators of Nigeria in the last three years is shown below")
     st.write(economic)
-    st.markdown("From the values in the last three years, we can observe that the health of the country is declining and increase in CPI inflation rate.")
-    st.markdown("A consumer price index is estimated as a series of summary measures of the period-to-period proportional change in the prices of a fixed set of consumer goods and services of constant quantity and characteristics, acquired, used or paid for by the reference population.")
+    st.markdown("From the values in the last three years, we can observe that the health of the country is declining and there is an increase in CPI inflation rate.")
+    st.markdown("A consumer price index (CPI) is estimated as a series of summary measures of the period-to-period proportional change in the prices of a fixed set of consumer goods and services of constant quantity and characteristics, acquired, used or paid for by the reference population.")
     st.markdown("According to an [article](https://www.premiumtimesng.com/news/headlines/554166-updated-nigerias-inflation-rate-surges-17-year-high-to-20-5.html), the data from [Nigerian Bureau of statistics](https://www.nigerianstat.gov.ng/) reported that Nigeria’s inflation rate surged to 20.52% in August 2022, the highest since September 2005")
     # Conclusion
     st.markdown("**In Conclusion**, there is a price imbalance in Nigeria as food-producing states sell at cheaper price but due to insecurity, inflation and other economic indicator the prices changes as it gets to other states in the country.")
+    st.markdown("Thank you for reading")
+    st.markdown("You can connect with me [here](https://www.linkedin.com/in/zaynab-arowosegbe-b292781a4/)")
 
 
 
