@@ -203,8 +203,8 @@ with six_states:
     st.markdown("The top 5 food items that increased the **least** from last month and their corresponding yearly increase.")
     st.write(m_y.tail())
     st.subheader("Comparing current price (July 2022) of six food items across six states")
-    st.markdown("The current price of **six** major food items (*from high and low percentage increase*) of a state in the six geopolitical zones is visualised")
-    st.markdown("This emphasises the price inflation in the southeast state (**Imo**) compared to other states like **Borno** that sells at the least price")
+    st.markdown("The current price of **six** major food items (*from high and low percentage increase*) of a state in the six geopolitical zones is visualised.")
+    st.markdown("This emphasises the price inflation in the southeast state (**Imo**) compared to other states like **Borno** that sells at the least price.")
     # First plot
     fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
     color_1 = ["grey" for i in range(6)]
