@@ -12,7 +12,6 @@ analyse_data = st.container()
 geo_zones = st.container()
 six_states = st.container()
 correl = st.container()
-covid = st.container()
 causes  = st.container()
 
 # Load datasets
@@ -282,7 +281,8 @@ with correl:
     st.markdown("From the heatmap below that augments the correlation matrix below, we can observe that:")
     st.markdown("The major correlations are listed below")
     st.markdown("Positive correlation between")
-    st.markdown("- Bread, beans, gaari and rice.")
+    st.markdown("- Both forms of bread, beans, gaari and maaize.")
+    st.markdown("- The four forms of (imported, ofada, broken and medium grained)")
     st.markdown("- Groundnut oil, palm oil and vegetable oil.")
     st.markdown("- Irish potato, palm oil and vegetable oil.")
     st.markdown("- Milk, bread, veg oil and wheat flour.")
@@ -298,12 +298,9 @@ with correl:
     sns.heatmap(corr, ax=ax)
     st.write(fig)
 
-with covid:
-    st.subheader("Effect of Covid19 on Nigerian Food Prices")
-
-
 with causes:
     st.header("What are the causes of food inflation?")
+    st.subheader("Effect of Covid19 on Nigerian Food Prices")
     st.markdown("hedee")
     st.subheader("States with the most frequent attacks (2013-2021)")
     # Plot map
