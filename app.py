@@ -61,8 +61,9 @@ with header:
 
 with dataset:
     st.header("About the dataset")
-    st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics, which collects and publishes food prices across the country every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
+    st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
     st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data.")
+    st.markdown("I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years. ")
     st.markdown("Below are frist five rows from tables of the split dataset")
 
     # Show data
@@ -197,6 +198,7 @@ with geo_zones:
     st.markdown("The prices of **ten** food items are compared across the geopolitical zones, the highest prices are annotated in red.")
     st.markdown("We can observe that food is generally more expensive in the **south east** with north-west coming in next. Food is cheaper in the **north central** except **yam** that is cheaper in North East (*Taraba is one of the yam-producing states in the country.*)")
     st.markdown("The north central comprises the major food-producing states like Benue, Nassarawa, Platea and Niger.")
+    st.markdown("(*View table in full screen mode to better see the values or scroll if viewing on mobile*)")
     st.write(fig)
 
 with six_states:
@@ -360,6 +362,7 @@ with causes:
 
     # Attacks
     st.subheader("Influence of Insecurities in the Country")
+    st.markdown("In Nigeria, the leading producing states include: Niger, Kano, Jigawa, Zamfara,Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe States (NAERL, 2011)")
     st.markdown("The number of attacks in each state in the last 9 years is visualised")
     #st.markdown("**States with the most frequent attacks (2013-2021)**")
     # Plot map
@@ -381,7 +384,11 @@ with causes:
     fig_bar = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
     fig_bar.update_layout(width=900)
     st.write(fig_bar)
+    st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) In Borno, the following food items are sown maize, yam, cassava, cowpea, sorghum, millet, sweet potato and rice. While millet, sorghum, and maize are sown in Zamfara")
+    st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
     
+
+    # Economic indicators
     st.subheader("Economic Indicators for the Last Three Years")
     st.write(economic)
 
