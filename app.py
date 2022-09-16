@@ -64,7 +64,7 @@ with dataset:
     st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
     st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data.")
     st.markdown("I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years. ")
-    st.markdown("Below are frist five rows from tables of the split dataset")
+    st.markdown("Below are frist five rows from some tables of the split dataset")
 
     # Show data
     st.write(price_data.head())
@@ -133,20 +133,12 @@ with analyse_data:
     #ax.vlines(2020, ymin=min, ymax=max, color="k", alpha=0.5)
     plt.ylabel("Price in Naira (₦)", fontsize=15)
     plt.xlabel("Year", fontsize=15)
-    fig_line.text(0.67, 0.17, high[dic[food_item]], fontsize=15)
-    fig_line.text(0.67, 0.20, low[dic[food_item]], fontsize=15)
-    fig_line.text(0.67, 0.23, "Current national price at " + "₦"+ str(price), fontsize=15)
+    fig_line.text(0.67, 0.14, high[dic[food_item]], fontsize=15)
+    fig_line.text(0.67, 0.17, low[dic[food_item]], fontsize=15)
+    fig_line.text(0.67, 0.20, "Current national price at " + "₦"+ str(price), fontsize=15)
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
     st.write(fig_line)    
-
-
-    # st.subheader("Prices(₦) of "+ food_item + " (Jan 2017 - July 2022)")
-    # line = pd.DataFrame(price_data[food_item])
-    # st.line_chart(line)
-    # # Show states with lowest and highest prices
-    # st.subheader("State with lowest and highest price of " + food_item)
-    # st.write(low_high[low_high["Food Item"] == food_item].set_index("Food Item"))
 
 
 # Comparing across geopolitical zones
