@@ -89,7 +89,7 @@ with analyse_data:
        'Gaari white, sold loose', 'Gaari yellow, sold loose',
        'Groundnut oil, 1 bottle', 'Iced Sardine', 'Irish potato',
        'Mackerel : frozen', 'Maize grain white,  sold loose',
-       'Maize grain yellow, sold loose', 'Mudfish (aro) fresh',
+       'Maize grain yellow, sold loose', 'Muprice_dataish (aro) fresh',
        'Mudfish (dried)', 'Onion bulb', 'Palm oil: 1 bottle',
        'Plantain (ripe)', 'Plantain (unripe)', 'Rice agric, sold loose',
        'Rice local (ofada), sold loose', 'Rice Medium Grained',
@@ -190,7 +190,7 @@ with geo_zones:
                format = [None, ",.2f"],
                prefix = [None, '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦']))
                 ])
-    fig.update_layout(height=900, width=600, autosize=True)
+    fig.update_layout(height=700, width=900, autosize=False)
     fig.update_traces(cells_font=dict(size = 15))
     #st.subheader("Current Average Prices of Selected Food Items per Geopolitical Zones (July 2022)")
     st.markdown("**(Highest Prices in Red)**")
@@ -215,7 +215,7 @@ with six_states:
     color_1 = ["grey" for i in range(6)]
     color_1[2] = color_1[3] = "#1f77b4"
     ax1.bar(current_price["State"], current_price["Beans brown,sold loose"], color = color_1)
-    ax1.set_title("Brown Beans", fontsize=80)
+    ax1.set_title("Brown Beans", fontsize=60)
     ax1.tick_params(axis='x', labelsize=40)
     ax1.tick_params(axis='y', labelsize=40)
     for s in ['top', 'right']:
@@ -224,7 +224,7 @@ with six_states:
     color_2 = ["grey" for i in range(6)]
     color_2[2] = color_2[3] = "#1f77b4"
     ax2.bar(current_price["State"], current_price["Bread sliced 500g"], color=color_2)
-    ax2.set_title("Bread (500g)", fontsize=80)
+    ax2.set_title("Bread (500g)", fontsize=60)
     ax2.tick_params(axis='x', labelsize=40)
     ax2.tick_params(axis='y', labelsize=40)
     for s in ['top', 'right']:
@@ -236,7 +236,7 @@ with six_states:
     color_3 = ["grey" for i in range(6)]
     color_3[0] = color_3[3] = "#1f77b4"
     ax3.bar(current_price["State"], current_price["Rice local sold loose"], color=color_3)
-    ax3.set_title("Local Rice", fontsize=80)
+    ax3.set_title("Local Rice", fontsize=60)
     ax3.tick_params(axis='x', labelsize=40)
     ax3.tick_params(axis='y', labelsize=40)
     for s in ['top', 'right']:
@@ -245,7 +245,7 @@ with six_states:
     color_4 = ["grey" for i in range(6)]
     color_4[4] = color_4[3] = "#1f77b4"
     ax4.bar(current_price["State"], current_price["Gari white,sold loose"], color=color_4)
-    ax4.set_title("White Gaari", fontsize=80)
+    ax4.set_title("White Gaari", fontsize=60)
     ax4.tick_params(axis='x', labelsize=40)
     ax4.tick_params(axis='y', labelsize=40)
     for s in ['top', 'right']:
@@ -257,7 +257,7 @@ with six_states:
     color_5 = ["grey" for i in range(6)]
     color_5[2] = color_5[3] = "#1f77b4"
     ax5.bar(current_price["State"], current_price["Vegetable oil:1 bottle,specify bottle"], color=color_5)
-    ax5.set_title("Vegetable Oil", fontsize=80)
+    ax5.set_title("Vegetable Oil", fontsize=60)
     ax5.tick_params(axis='x', labelsize=40)
     ax5.tick_params(axis='y', labelsize=40)
     for s in ['top', 'right']:
@@ -266,7 +266,7 @@ with six_states:
     color_6 = ["grey" for i in range(6)]
     color_6[2] = color_6[3] = "#1f77b4"
     ax6.bar(current_price["State"], current_price["Palm oil: 1 bottle,specify bottle"], color=color_6)
-    ax6.set_title("Palm Oil", fontsize=80)
+    ax6.set_title("Palm Oil", fontsize=60)
     ax6.tick_params(axis='x', labelsize=40)
     ax6.tick_params(axis='y', labelsize=40)
     for s in ['top', 'right']:
@@ -310,56 +310,58 @@ with causes:
     st.markdown("- Vegetable oil, groundnut oil and Palm oil")
     st.markdown("We can observe that they are majorly grains, why is this though?")
     st.markdown("Their line plots are shown below")
-    st.markdown("hedee")
-    st.subheader("States with the most frequent attacks (2013-2021)")
+    #st.markdown("")
 
     # Plot line plot
     fig_cov1, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
-    ax1.plot(df["Beans brown,sold loose"], label="Brown Beans")
-    ax1.plot(df["Beans:white black eye. sold loose"], label="White Beans")
-    ax1.axvline("2020-03-31",color ='grey', lw = 0.5, alpha = 0.75)
-    ax1.text("2020-04-30", 230, "March 2020")
+    ax1.plot(price_data["Beans brown,sold loose"], label="Brown Beans")
+    ax1.plot(price_data["Beans:white black eye. sold loose"], label="White Beans")
+    #ax1.axvline("2020-03-31",color ='grey', lw = 0.5, alpha = 0.75)
+    #ax1.text(0.5, 230, "March 2020")
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.title.set_text("Covid19 Pandemic Influence on Price of Beans")
+    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=18)
     ax1.legend()
 
-    ax2.plot(df["Maize grain white,  sold loose"], label="White Maize")
-    ax2.plot(df["Maize grain yellow, sold loose"], label="Yellow Maize")
-    ax2.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
-    ax2.text("2019-12-31", 129, "November 2019")
+    ax2.plot(price_data["Maize grain white,  sold loose"], label="White Maize")
+    ax2.plot(price_data["Maize grain yellow, sold loose"], label="Yellow Maize")
+    #ax2.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
+    #ax2.text(0.5, 129, "November 2019")
     for s in ['top', 'right']:
       ax2.spines[s].set_visible(False)
-    ax2.title.set_text("Covid19 Pandemic Influence on Price of Maize")
+    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=18)
     ax2.legend()
     st.write(fig_cov1)
 
 
     fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
-    ax1.plot(df["Rice agric, sold loose"], label="Agric Rice")
-    ax1.plot(df["Rice local (ofada), sold loose"], label="Ofada Rice")
-    ax1.plot(df["Rice Medium Grained"], label="Medium Grained Rice")
-    ax1.plot(df["Broken Rice (Ofada)"], label="Broken Rice")
-    ax1.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
-    ax1.text("2019-12-31", 260, "November 2019")
+    ax1.plot(price_data["Rice agric, sold loose"], label="Agric Rice")
+    ax1.plot(price_data["Rice local (ofada), sold loose"], label="Ofada Rice")
+    ax1.plot(price_data["Rice Medium Grained"], label="Medium Grained Rice")
+    ax1.plot(price_data["Broken Rice (Ofada)"], label="Broken Rice")
+    #ax1.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
+    #ax1.text("2019-12-31", 260, "November 2019")
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.title.set_text("Covid19 Pandemic influence on Price of Rice")
+    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=18)
     ax1.legend()
 
-    ax2.plot(df["Vegetable oil:1 bottle"], label="Vegetable Oil")
-    ax2.plot(df["Palm oil: 1 bottle"], label="Palm Oil")
-    ax2.plot(df["Groundnut oil, 1 bottle"], label="Groundnut Oil")
-    ax2.axvline("2020-01-31",color ='grey', lw = 0.5, alpha = 0.75)
-    ax2.text("2020-02-28", 400, "January 2020")
+    ax2.plot(price_data["Vegetable oil:1 bottle"], label="Vegetable Oil")
+    ax2.plot(price_data["Palm oil: 1 bottle"], label="Palm Oil")
+    ax2.plot(price_data["Groundnut oil, 1 bottle"], label="Groundnut Oil")
+    #ax2.axvline("2020-01-31",color ='grey', lw = 0.5, alpha = 0.75)
+    #ax2.text("2020-02-28", 400, "January 2020")
     for s in ['top', 'right']:
          ax2.spines[s].set_visible(False)
-    ax2.title.set_text("Covid19 Pandemic influence on Price of Cooking Oil")
+    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=18)
     ax2.legend()
     st.write(fig_cov2)
 
 
     # Attacks
+    st.subheader("Influence of Insecurities in the Country")
+    st.markdown("The number of attacks in each state in the last 9 years is visualised")
+    #st.markdown("**States with the most frequent attacks (2013-2021)**")
     # Plot map
     fig_geo = px.scatter_geo(
     attack, lat="lat", lon="lon",
@@ -375,7 +377,7 @@ with causes:
     )
     st.write(fig_geo)
 
-    st.subheader("Most Attacked States(2013-2021)")
+    st.subheader("Most Attacked States (2013-2021)")
     fig_bar = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
     fig_bar.update_layout(width=900)
     st.write(fig_bar)
