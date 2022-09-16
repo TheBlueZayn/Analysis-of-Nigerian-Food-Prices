@@ -125,7 +125,6 @@ with analyse_data:
     max = price_data[food_item].max()
     min = price_data[food_item].min()
     price = price_data[food_item].tail(1)[0]
-    y = ((max - min) / price)
 
     # plot graph
     st.subheader("National Price(₦) of "+ food_item + " (Jan 2017 - July 2022)")
@@ -136,7 +135,7 @@ with analyse_data:
     plt.xlabel("Year", fontsize=15)
     fig_line.text(0.67, 0.17, high[dic[food_item]], fontsize=15)
     fig_line.text(0.67, 0.20, low[dic[food_item]], fontsize=15)
-    fig_line.text(0.85, y, "₦"+ str(price), fontsize=15)
+    fig_line.text(0.67, 0.23, "Current national price at " + "₦"+ str(price), fontsize=15)
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
     st.write(fig_line)    
@@ -192,7 +191,7 @@ with geo_zones:
                format = [None, ",.2f"],
                prefix = [None, '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦']))
                 ])
-    fig.update_layout(height=700, width=600, autosize=True)
+    fig.update_layout(height=900, width=600, autosize=True)
     fig.update_traces(cells_font=dict(size = 15))
     #st.subheader("Current Average Prices of Selected Food Items per Geopolitical Zones (July 2022)")
     st.markdown("**(Highest Prices in Red)**")
@@ -298,7 +297,11 @@ with correl:
     fig, ax = plt.subplots(figsize=(20,15))
     sns.heatmap(corr, ax=ax)
     st.write(fig)
-    
+
+with covid:
+    st.subheader("Effect of Covid19 on Nigerian Food Prices")
+
+
 with causes:
     st.header("What are the causes of food inflation?")
     st.markdown("hedee")
