@@ -46,8 +46,8 @@ economic = pd.read_csv("economic-indicators.csv")
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.markdown("**By Zaynab Arowosegbe**")
-    st.markdown("Nigeria has been facing food price inflation for the past few years, coupled with economic crises and poverty. it is also no news that the country has been fighting insecurity in form of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities.")
-    st.markdown("In this report, I would analyse the prices of 42 food items, their average prices, prices across the states in the country and the price changes from January 2017 to July 2022 and would be answering the following questions:")
+    st.markdown("Nigeria has been facing food price inflation for the past few years, coupled with economic crises and poverty. it is also no news that the country has been fighting insecurity in forms of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities.")
+    st.markdown("In this report, I would analyse the prices of 42 food items, their average prices on a national level, state level and the price changes from January 2017 to July 2022 and would be answering the following questions:")
     st.markdown("- What has been the trend of the prices across the years?")
     st.markdown("- What is the current average national price and what states have the lowest and highest price?")
     st.markdown("- What are the variations across the six geopolitical zones?")
@@ -382,7 +382,13 @@ with causes:
 
     # Economic indicators
     st.subheader("Economic Indicators for the Last Three Years")
+    st.markdown("An economic indicator is a metric used to assess, measure, and evaluate the overall state of health of the macroeconomy.")
     st.write(economic)
+    st.markdown("From the values in the last three years, we can observe that the health of the country is declining and increase in CPI inflation rate.")
+    st.markdown("A consumer price index is estimated as a series of summary measures of the period-to-period proportional change in the prices of a fixed set of consumer goods and services of constant quantity and characteristics, acquired, used or paid for by the reference population.")
+    st.markdown("According to an [article](https://www.premiumtimesng.com/news/headlines/554166-updated-nigerias-inflation-rate-surges-17-year-high-to-20-5.html), the data from [Nigerian Bureau of statistics](https://www.nigerianstat.gov.ng/) reported that Nigeria’s inflation rate surged to 20.52% in August 2022, the highest since September 2005")
+    # Conclusion
+    st.markdown("**In Conclusion**, there is a price imbalance in Nigeria as food-producing states sell at cheaper price but due to insecurity, inflation and other economic indicator the prices changes as it gets to other states in the country.")
 
 
 
