@@ -61,7 +61,7 @@ with header:
 
 with dataset:
     st.header("About the dataset")
-    st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
+    st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country at the end of every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
     st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data.")
     st.markdown("I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years. ")
     st.markdown("Below are first five rows from some tables of the split dataset")
@@ -144,7 +144,7 @@ with analyse_data:
 
 # Comparing across geopolitical zones
 with geo_zones:
-    st.header("Comparing current prices (July 2022) of major food items across geopolitical zones")
+    st.header("Comparing current price (July 2022) of major food items across geopolitical zones")
 
     # Get column names from zones dataset
     columns = ['Beans brown,sold loose', 'Beef (boneless)', 'Bread sliced 500g',
@@ -202,7 +202,7 @@ with six_states:
     st.write(m_y.head())
     st.markdown("The top 5 food items that increased the **least** from last month and their corresponding yearly increase.")
     st.write(m_y.tail())
-    st.subheader("Comparing current prices (July 2022) of six food items across six states")
+    st.subheader("Comparing current price (July 2022) of six food items across six states")
     st.markdown("The current price of **six** major food items (*from high and low percentage increase*) of a state in the six geopolitical zones is visualised")
     st.markdown("This emphasises the price inflation in the southeast state (**Imo**) compared to other states like **Borno** that sells at the least price")
     # First plot
