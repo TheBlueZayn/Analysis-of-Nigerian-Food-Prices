@@ -47,7 +47,7 @@ economic = pd.read_csv("economic-indicators.csv")
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
     st.markdown("**By Zaynab Arowosegbe**")
-    st.markdown("Nigeria has been facing food price inflation for the past few years and it is no news that the country has been fighting insecurity in form of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities. ")
+    st.markdown("Nigeria has been facing food price inflation for the past few years, coupled with economic crises and poverty. it is also no news that the country has been fighting insecurity in form of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities.")
     st.markdown("In this report, I would analyse the prices of 42 food items, their average prices, prices across the states in the country and the price changes from January 2017 to July 2022 and would be answering the following questions:")
     st.markdown("- What has been the trend of the prices across the years?")
     st.markdown("- What is the current average national price and what states have the lowest and highest price?")
