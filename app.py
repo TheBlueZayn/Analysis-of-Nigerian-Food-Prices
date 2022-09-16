@@ -280,14 +280,14 @@ with correl:
     st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation (they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation (if one increases, the other decreases, *the darkest shade*).")
     st.markdown("From the visualisation, we can observe that:")
     st.markdown("The major correlations are listed below")
-    st.markdown("Positive correlation between")
+    st.markdown("**Positive correlation between**")
     st.markdown("- Both forms of bread, beans, gaari and maaize.")
-    st.markdown("- The four forms of (imported, ofada, broken and medium grained)")
+    st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
     st.markdown("- Groundnut oil, palm oil and vegetable oil.")
     st.markdown("- Irish potato, palm oil and vegetable oil.")
     st.markdown("- Milk, bread, veg oil and wheat flour.")
     st.markdown("- Maize and vegetable oil.")
-    st.markdown("Negative correlation between")
+    st.markdown("**Negative correlation between**")
     st.markdown("- Fresh mudfish and dried mudfish")
     st.markdown("- Dried mudfish, smoked catfish and dried fish.")
     st.markdown("- Iced sardine, and catfish.")
@@ -298,10 +298,16 @@ with correl:
 with causes:
     st.header("What are the causes of food inflation?")
     st.markdown("From a publication by [premium times](https://www.premiumtimesng.com/agriculture/agric-news/540069-five-reasons-food-prices-remain-high-in-nigeria-in-2022.html), the five major reasons food remains high in Nigeria in 2022 are;")
-    
+    st.markdown("- Fuel scarcity")
+    st.markdown("- Electricity shortage")
+    st.markdown("- Russia-Ukraine crisis (*strain on the food supply chain as Nigeria imports some agricultural products*)")
+    st.markdown("- Insecurity and")
+    st.markdown("- Foreign exchange problem")
+    st.markdown("I'll be looking into some other factors I feel has affected food prices")
+
 
     # Covid 19 influence
-    st.subheader("Effect of Covid19 on Nigerian Food Prices")
+    st.subheader("Effect of Covid19 pandemic")
     st.markdown("On a general scale, all the food prices had a rise in **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
     st.markdown("- White and yellow gaari")
     st.markdown("- White and yellow maize")
