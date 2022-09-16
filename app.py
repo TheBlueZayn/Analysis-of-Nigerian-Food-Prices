@@ -64,7 +64,7 @@ with dataset:
     st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
     st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data.")
     st.markdown("I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years. ")
-    st.markdown("Below are frist five rows from some tables of the split dataset")
+    st.markdown("Below are first five rows from some tables of the split dataset")
 
     # Show data
     st.write(price_data.head())
@@ -119,6 +119,7 @@ with analyse_data:
        'Rice (imported high quality),  sold loose':35, 'Sweet potato':36,
        'Tilapia fish (epiya) fresh':37, 'Titus (frozen)':38, 'Tomato':29,
        'Vegetable oil:1 bottle':40, 'Wheat flour: prepacked (golden penny 2kg)':41}
+    
 
     high = "Most expensive in " + low_high["Highest"]
     low = "Cheapest in " + low_high["Lowest"]
