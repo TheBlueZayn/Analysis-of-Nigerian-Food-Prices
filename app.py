@@ -392,10 +392,10 @@ with causes:
     st.write(fig_geo)
 
     st.subheader("Most Attacked States (2013-2021)")
-    fig_bar = most_attacked.groupby("state")[["attacks", "deaths"]].sum().sort_values(by=['attacks'], ascending=False).plot(kind="bar", figsize=(15,7))
+    fig_bar = most_attacked.groupby("state")[["attacks", "deaths"]].sum().sort_values(by=['attacks'], ascending=False).plot(kind="bar", figsize=(15,7));
     plt.xticks(rotation=0)
     st.write(fig_bar)
-    
+
     st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states")
     st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
     
