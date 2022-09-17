@@ -45,7 +45,7 @@ economic = pd.read_csv("economic-indicators.csv")
 
 with header:
     st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
-    st.markdown("**By Zaynab Arowosegbe**")
+    st.markdown("**Zaynab Arowosegbe**")
     st.markdown("Nigeria has been facing food price inflation for the past few years, coupled with economic crises and poverty. it is also no news that the country has been fighting insecurity in forms of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities.")
     st.markdown("In this report, I would analyse the prices of 42 food items, their average prices on a national level, state level and the price changes from January 2017 to July 2022 and would be answering the following questions:")
     st.markdown("- What has been the trend of the prices across the years?")
@@ -288,12 +288,22 @@ with correl:
     st.markdown("- Maize and vegetable oil")
     st.markdown("**Negative correlation between**")
     st.markdown("- Fresh mudfish and dried mudfish")
-    st.markdown("- Dried mudfish, smoked catfish and dried fish")
-    st.markdown("- Iced sardine, and catfish.")
-    st.markdown("- Iced sardine and dried fish sardine")
+    #st.markdown("- Dried mudfish, smoked catfish and dried fish")
+    st.markdown("- Iced sardine, dried fish sardine and catfish")
+    #st.markdown("An interesting correlation is between **fresh mudfish** and **dried mudfish**")
+    fig_mud, ax = plt.subplots(figsize=(15,10))
+    ax.plot(price_data["Mudfish (aro) fresh"], label="Fresh Mudfish")
+    ax.plot(price_data["Mudfish (dried)"], label="Dried Mudfish")
+    plt.ylabel("Price in Naira (₦)", fontsize=15)
+    plt.xlabel("Year", fontsize=15)
+    ax.legend(loc="lower right")
+    fig_mud.text(0.38, 0.93,"An interesting correlation is between dried mudfish and fresh mudfish.", fontsize=15)
+    fig_mud.text(0.38, 0.88,"The price of fresh mudfish is about half the price of it’s dried counterpart.", fontsize=15)
+    fig_mud.text(0.38, 0.83,"This difference could be due to different reasons like storage.", fontsize=15)
+    for s in ['top', 'right']:
+         ax.spines[s].set_visible(False)
+    st.write(fig_mud)
     
-
-
 with causes:
     st.header("What are the causes of food inflation?")
     st.markdown("From a publication by [premium times](https://www.premiumtimesng.com/agriculture/agric-news/540069-five-reasons-food-prices-remain-high-in-nigeria-in-2022.html), the five major reasons food remains high in Nigeria in 2022 are;")
@@ -382,9 +392,10 @@ with causes:
     st.write(fig_geo)
 
     st.subheader("Most Attacked States (2013-2021)")
-    fig_bar = px.bar(most_attacked, x="state", y=["attacks", "deaths"], barmode="group")
-    fig_bar.update_layout(width=900)
+    fig_bar = most_attacked.groupby("state")[["attacks", "deaths"]].sum().sort_values(by=['attacks'], ascending=False).plot(kind="bar", figsize=(15,7))
+    plt.xticks(rotation=0)
     st.write(fig_bar)
+    
     st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states")
     st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
     
