@@ -12,10 +12,14 @@ I also used a [dataset](https://github.com/TheBlueZayn/Project/blob/main/economi
 ## **Steps**
 The [initial dataset](https://github.com/TheBlueZayn/Project/blob/main/Data%20Sources/SELECTED%20FOOD%20(JAN_2017%20-%20FEB%202022).xlsx) (*an excel file*) from NBS was collected which contained data from January 2017 to Febuary 2022 over the years, subsequent data was manually appended to the existing data. The initial form of the dataset had the dates as columns and food items as rows. While this is comvinient as a spreadsheet, it is not the best for analyis. The final dataset was exported to a python environment and transposed with pandas and then later exported to a spreadsheet for final cleaning. 
 The original dataset contained extra information on the state with the lowest and highest price for a particular food item, the month-month increase, year-year increase, prices and geographcal zone and others. The individual data was split into smaller datesets to aid analysis. 
-For the **analysis**, the following libraries were used;
+
+- [prices.ipynb](https://github.com/TheBlueZayn/Analysis-of-Nigerian-Food-Prices/blob/main/prices.ipynb) contains the codes of analysis
+
+The following libraries were used;
 - Pandas for data wrangling and analysis
 - Matplotlib for visualisations
 - Plotly for an interactive visualisation interface
+
 
 **View this analysis in an interactive form on the web [here](https://thebluezayn-project-app-9exv3v.streamlitapp.com/)**
 
