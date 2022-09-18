@@ -27,6 +27,7 @@ low_high = pd.read_csv("lowest_highest.csv")
 
 # Data 3
 zones = pd.read_csv("zone_prices.csv")
+zones_1 = pd.read_csv("zones_1.csv")
 
 # Data 4
 current_price = pd.read_csv("current_price_six_states.csv")
@@ -44,7 +45,7 @@ most_attacked= attack.sort_values(by=['attacks'], ascending=False)[:10]
 economic = pd.read_csv("economic-indicators.csv")
 
 with header:
-    st.title("""Analysis of Nigerian Food Prices (Jan 2017 - July 2022)""")
+    st.title("""Analysis of Nigerian Food Prices (January 2017 - July 2022)""")
     st.markdown("**Zaynab Arowosegbe**")
     st.markdown("Nigeria has been facing food price inflation for the past few years, coupled with economic crises and poverty. it is also no news that the country has been fighting insecurity in forms of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities.")
     st.markdown("In this report, I would analyse the prices of 42 food items, their average prices on a national level, state level and the price changes from January 2017 to July 2022 and would be answering the following questions:")
@@ -62,65 +63,57 @@ with header:
 with dataset:
     st.header("About the dataset")
     st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country at the end of every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
-    st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data.")
-    st.markdown("I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years. ")
-    st.markdown("Below are first five rows from some tables of the split dataset")
+    st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data from [github](https://github.com/kfalayi/Food-price-Nigeria/blob/main/attacks.xlsx).I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years.")
+    #st.markdown("Below are first five rows from some tables of the split dataset")
 
     # Show data
-    st.write(price_data.head())
-    st.write(low_high.head())
+    #st.write(price_data.head())
+    #st.write(low_high.head())
 
     
 with analyse_data:
     st.header("Analysis of the various food items")
-    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive are annotated on the graph. ")
+    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive are annotated on the graph.")
     # Create input colums
     sel_col, disp_col = st.columns(2)
     price_data.set_index("Date", inplace=True)
 
-    food_item = sel_col.selectbox("Select the food item to analyse", options=[
-        'Agric eggs medium size', 'Agric eggs(medium size price of one)',
-       'Beans brown,sold loose', 'Beans:white black eye. sold loose',
-       'Beef Bone in', 'Beef,boneless', 'Bread sliced 500g',
-       'Bread unsliced 500g', 'Broken Rice (Ofada)', 'Catfish (dried)',
-       'Catfish (obokun) fresh', 'Catfish (Smoked)', 'Chicken Feet',
+    food_item = sel_col.selectbox("Select the food item to analyse", options=['Agric eggs (medium size)', 'Agric egg (medium size)',
+       'Beans (brown)', 'Beans (white black eye)', 'Beef (bone in)',
+       'Beef (boneless)', 'Bread sliced 500g', 'Bread unsliced 500g',
+       'Broken Rice (Ofada)', 'Catfish (obokun) dried',
+       'Catfish (obokun) fresh', 'Catfish (obokun) smoked', 'Chicken Feet',
        'Chicken Wings', 'Dried Fish Sardine',
-       'Evaporated tinned milk carnation 170g',
-       'Evaporated tinned milk(peak) 170g', 'Frozen chicken',
-       'Gaari white, sold loose', 'Gaari yellow, sold loose',
-       'Groundnut oil, 1 bottle', 'Iced Sardine', 'Irish potato',
-       'Mackerel : frozen', 'Maize grain white,  sold loose',
-       'Maize grain yellow, sold loose', 'Muprice_dataish (aro) fresh',
-       'Mudfish (dried)', 'Onion bulb', 'Palm oil: 1 bottle',
-       'Plantain (ripe)', 'Plantain (unripe)', 'Rice agric, sold loose',
-       'Rice local (ofada), sold loose', 'Rice Medium Grained',
-       'Rice (imported high quality),  sold loose', 'Sweet potato',
+       'Evaporated tinned milk carnation', 'Evaporated tinned milk(peak) ',
+       'Frozen chicken', 'Gaari white', 'Gaari yellow', 'Groundnut oil',
+       'Iced Sardine', 'Irish potato', 'Mackerel (frozen)',
+       'Maize grain white', 'Maize grain yellow', 'Mudfish (aro) fresh',
+       'Mudfish (aro) dried', 'Onion bulb', 'Palm oil', 'Plantain (ripe)',
+       'Plantain (unripe)', 'Rice agric', 'Rice local (ofada)',
+       'Rice Medium Grained', 'Rice (imported high quality)', 'Sweet potato',
        'Tilapia fish (epiya) fresh', 'Titus (frozen)', 'Tomato',
-       'Vegetable oil:1 bottle', 'Wheat flour: prepacked (golden penny 2kg)',
-       'Yam tuber'])    
+       'Vegetable oil', 'Wheat flour:', 'Yam tuber'] ) 
     
 
     # Create variables
-    dic = {'Agric eggs medium size':0, 'Agric eggs(medium size price of one)':1,
-       'Beans brown,sold loose':2, 'Beans:white black eye. sold loose':3,
-       'Beef Bone in':4, 'Beef,boneless':5, 'Bread sliced 500g':6,
-       'Bread unsliced 500g':7, 'Broken Rice (Ofada)':8, 'Catfish (dried)':9,
-       'Catfish (obokun) fresh':10, 'Catfish (Smoked)':11, 'Chicken Feet':12,
+    dic = {'Agric eggs (medium size)':0, 'Agric egg (medium size)':1,
+       'Beans (brown)':2, 'Beans (white black eye)':3, 'Beef (bone in)':4,
+       'Beef (boneless)':5, 'Bread sliced 500g':6, 'Bread unsliced 500g':7,
+       'Broken Rice (Ofada)':8, 'Catfish (dried)':9,
+       'Catfish (obokun) fresh':10, 'Catfish (smoked)':11, 'Chicken Feet':12,
        'Chicken Wings':13, 'Dried Fish Sardine':14,
-       'Evaporated tinned milk carnation 170g':15,
-       'Evaporated tinned milk(peak) 170g':16, 'Frozen chicken':17,
-       'Gaari white, sold loose':18, 'Gaari yellow, sold loose':19,
-       'Groundnut oil, 1 bottle':20, 'Iced Sardine':21, 'Irish potato':22,
-       'Mackerel : frozen':23, 'Maize grain white,  sold loose':24,
-       'Maize grain yellow, sold loose':25, 'Mudfish (aro) fresh':26,
-       'Mudfish (dried)':27, 'Onion bulb':28, 'Palm oil: 1 bottle':29,
-       'Plantain (ripe)':30, 'Plantain (unripe)':31, 'Rice agric, sold loose':32,
-       'Rice local (ofada), sold loose':33, 'Rice Medium Grained':34,
-       'Rice (imported high quality),  sold loose':35, 'Sweet potato':36,
-       'Tilapia fish (epiya) fresh':37, 'Titus (frozen)':38, 'Tomato':29,
-       'Vegetable oil:1 bottle':40, 'Wheat flour: prepacked (golden penny 2kg)':41}
+       'Evaporated tinned milk carnation':15, 'Evaporated tinned milk(peak) ':16,
+       'Frozen chicken':17, 'Gaari white':18, 'Gaari yellow':19, 'Groundnut oil':20,
+       'Iced Sardine':21, 'Irish potato':22, 'Mackerel (frozen)':23,
+       'Maize grain white':24, 'Maize grain yellow':25, 'Mudfish (aro) fresh':26,
+       'Mudfish (aro) dried':27, 'Onion bulb':28, 'Palm oil':29, 'Plantain (ripe)':30,
+       'Plantain (unripe)':31, 'Rice agric':32, 'Rice local (ofada)':33,
+       'Rice Medium Grained':34, 'Rice (imported high quality)':35, 'Sweet potato':36,
+       'Tilapia fish (epiya) fresh':37, 'Titus (frozen)':38, 'Tomato':39,
+       'Vegetable oil':40, 'Wheat flour:':41, 'Yam tuber':42}
     
 
+    label = "Price per " + low_high["Description"]
     high = "Most expensive in " + low_high["Highest"]
     low = "Cheapest in " + low_high["Lowest"]
     max = price_data[food_item].max()
@@ -137,6 +130,7 @@ with analyse_data:
     fig_line.text(0.67, 0.14, high[dic[food_item]], fontsize=15)
     fig_line.text(0.67, 0.17, low[dic[food_item]], fontsize=15)
     fig_line.text(0.67, 0.20, "Current national price at " + "₦"+ str(price), fontsize=15)
+    fig_line.text(0.67, 0.26, label[dic[food_item]], fontsize=13)
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
     st.write(fig_line)    
@@ -157,41 +151,37 @@ with geo_zones:
     for c in columns:
         max.append(zones[c].max())
 
-    val = [
-    [386.1840411, 379.0323035, 487.9978871, 853.1927586, 579.927014, 598.0036126],
-    [1524.440217, 1576.95147, 1945.430477, 2579.403467, 2115.790993, 2084.20833],
-    [332.4028314,326.6637037,440.2701763,645.9435902,505.5209314,502.2926772],
-    [272.9531667, 270.6920883, 521.499012, 390.268378, 285.6521444, 296.5013584],
-    [207.0223462, 188.1759649, 510.140152, 536.0682546, 601.0026235, 441.9778229],
-    [572.4250284,606.1546032,1065.537336,1094.023935,850.4868658,1014.104108],
-    [401.7234927,419.7734734,796.0259923,467.8275394,463.0285133,519.6446083],
-    [227.3305247,194.7206519,656.9394016,678.8038337,609.7815379,496.2086505],
-    [819.4621459,838.4580111,1129.354545,1342.914286,1057.081982,1155.383191],
-    [191.8493924, 168.1551907, 543.979936, 479.0973747, 468.6454505, 538.0165566]
-        ]
+    val = [[386.1840411,1524.440217,332.4028314,272.9531667,207.0223462,572.4250284,401.7234927,227.3305247,819.4621459,191.8493924],
+      [379.0323035,1576.95147,326.6637037,270.6920883,188.1759649,606.1546032,419.7734734,194.7206519,838.4580111,168.1551907],
+      [487.9978871,1945.430477,440.2701763,521.499012,510.140152,1065.537336,796.0259923,656.9394016,1129.354545,543.979936],
+      [853.1927586,2579.403467, 645.9435902,390.268378,536.0682546,1094.023935,467.8275394,678.8038337,1342.914286,479.0973747],
+      [579.927014,2115.790993,505.5209314,285.6521444,601.0026235,850.4868658,463.0285133,609.7815379,1057.081982,468.6454505],
+      [598.0036126,2084.20833,502.2926772,296.5013584,441.9778229,1014.104108,519.6446083,496.2086505,1155.383191,538.0165566]]
+
     font_color = ['rgb(40,40,40)'] + [['rgb(255,0,0)' if v == 853.1927586 or v == 2579.403467 or v == 645.9435902 or 
                                                      v ==  521.499012 or v == 601.0026235 or v == 1094.023935 or
                                                      v == 796.0259923 or v == 678.8038337 or v == 1342.914286 or
                                                      v == 543.979936
-                                                   else 'rgb(10,10,10)' for m in max for v in val[k]] for k in range(10)]
+                                                   else 'rgb(10,10,10)' for m in max for v in val[k]] for k in range(6)]
     # Plot data
     fig = go.Figure(data=[go.Table(
-    header=dict(values=list(zones.columns),
+    header=dict(values=list(zones_1.columns),
                 align='left',
                 font = dict(color=['rgb(45,45,45)']*2, size=14)),
-    cells=dict(values=zones.transpose().values.tolist(),
+    cells=dict(values=zones_1.transpose().values.tolist(),
                align='left', font = dict(color = font_color),
                format = [None, ",.2f"],
                prefix = [None, '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦']))
                 ])
-    fig.update_layout(height=700, width=900, autosize=False)
+    #fig.update_layout(height=700, width=900, autosize=False)
     fig.update_traces(cells_font=dict(size = 15))
-    #st.subheader("Current Average Prices of Selected Food Items per Geopolitical Zones (July 2022)")
     st.markdown("**(Highest Prices in Red)**")
     st.markdown("The prices of **ten** food items are compared across the geopolitical zones, the highest prices are annotated in red.")
     st.markdown("We can observe that food is generally more expensive in the **south east** with north-west coming in next. Food is cheaper in the **north central** except **yam** that is cheaper in North East (*Taraba is one of the yam-producing states in the country.*)")
     st.markdown("The north central comprises the major food-producing states like Benue, Nassarawa, Platea and Niger.")
     st.markdown("(*View table in full screen mode to better see the values or scroll if viewing on mobile*)")
+    st.markdown("**Highest prices in red**")
+    #st.markdown("<p style="color: red;">Highest prices in red</p>")
     st.write(fig)
 
 with six_states:
@@ -225,6 +215,7 @@ with six_states:
     for s in ['top', 'right']:
         ax2.spines[s].set_visible(False)
     st.write(fig1)
+    st.write("               ")
 
     fig2, (ax3, ax4) = plt.subplots(1,2, figsize=(40,25))
     # Thirdplot
@@ -246,6 +237,8 @@ with six_states:
     for s in ['top', 'right']:
         ax4.spines[s].set_visible(False)
     st.write(fig2)
+    st.write("         ")
+
 
     # Fifth plot
     fig3, (ax5, ax6) = plt.subplots(1,2, figsize=(40,25))
@@ -267,6 +260,7 @@ with six_states:
     for s in ['top', 'right']:
         ax6.spines[s].set_visible(False)
     st.write(fig3)
+    st.write("       ")
 
    
 with correl:
@@ -297,9 +291,9 @@ with correl:
     plt.ylabel("Price in Naira (₦)", fontsize=15)
     plt.xlabel("Year", fontsize=15)
     ax.legend(loc="lower right")
-    fig_mud.text(0.38, 0.93,"An interesting correlation is between dried mudfish and fresh mudfish.", fontsize=15)
-    fig_mud.text(0.38, 0.88,"The price of fresh mudfish is about half the price of it’s dried counterpart.", fontsize=15)
-    fig_mud.text(0.38, 0.83,"This difference could be due to different reasons like storage.", fontsize=15)
+    fig.text(0.38, 1.0,"As interesting negative correlation is observed from the data.", fontsize=15)
+    fig.text(0.38, 0.95,"This is between dried mudfish and fresh mudfish ", fontsize=15, fontweight="bold")
+    fig.text(0.38, 0.90,"The price of fresh mudfish is is about half the price of it’s dried counterpart.", fontsize=15)
     for s in ['top', 'right']:
          ax.spines[s].set_visible(False)
     st.write(fig_mud)
@@ -328,8 +322,8 @@ with causes:
 
     # Plot line plot
     fig_cov1, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
-    ax1.plot(price_data["Beans brown,sold loose"], label="Brown Beans")
-    ax1.plot(price_data["Beans:white black eye. sold loose"], label="White Beans")
+    ax1.plot(price_data["Beans (brown)"], label="Brown Beans")
+    ax1.plot(price_data["Beans (white black eye)"], label="White Beans")
     #ax1.axvline("2020-03-31",color ='grey', lw = 0.5, alpha = 0.75)
     #ax1.text(0.5, 230, "March 2020")
     for s in ['top', 'right']:
@@ -337,8 +331,8 @@ with causes:
     ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=18)
     ax1.legend()
 
-    ax2.plot(price_data["Maize grain white,  sold loose"], label="White Maize")
-    ax2.plot(price_data["Maize grain yellow, sold loose"], label="Yellow Maize")
+    ax2.plot(price_data["Maize grain white"], label="White Maize")
+    ax2.plot(price_data["Maize grain yellow"], label="Yellow Maize")
     #ax2.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
     #ax2.text(0.5, 129, "November 2019")
     for s in ['top', 'right']:
@@ -349,8 +343,8 @@ with causes:
 
 
     fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
-    ax1.plot(price_data["Rice agric, sold loose"], label="Agric Rice")
-    ax1.plot(price_data["Rice local (ofada), sold loose"], label="Ofada Rice")
+    ax1.plot(price_data["Rice agric"], label="Agric Rice")
+    ax1.plot(price_data["Rice local (ofada)"], label="Ofada Rice")
     ax1.plot(price_data["Rice Medium Grained"], label="Medium Grained Rice")
     ax1.plot(price_data["Broken Rice (Ofada)"], label="Broken Rice")
     #ax1.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
@@ -360,9 +354,9 @@ with causes:
     ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=18)
     ax1.legend()
 
-    ax2.plot(price_data["Vegetable oil:1 bottle"], label="Vegetable Oil")
-    ax2.plot(price_data["Palm oil: 1 bottle"], label="Palm Oil")
-    ax2.plot(price_data["Groundnut oil, 1 bottle"], label="Groundnut Oil")
+    ax2.plot(price_data["Vegetable oil"], label="Vegetable Oil")
+    ax2.plot(price_data["Palm oil"], label="Palm Oil")
+    ax2.plot(price_data["Groundnut oil"], label="Groundnut Oil")
     #ax2.axvline("2020-01-31",color ='grey', lw = 0.5, alpha = 0.75)
     #ax2.text("2020-02-28", 400, "January 2020")
     for s in ['top', 'right']:
@@ -392,8 +386,12 @@ with causes:
     st.write(fig_geo)
 
     st.subheader("Most Attacked States (2013-2021)")
-    fig_bar = most_attacked.groupby("state")[["attacks", "deaths"]].sum().sort_values(by=['attacks'], ascending=False).plot(kind="bar", figsize=(15,7));
-    plt.xticks(rotation=0)
+    incidents = pd.melt(most_attacked, id_vars = ["state"], value_vars=["attacks", "deaths"], var_name="incident", value_name="value")
+    fig_bar, ax = plt.subplots(figsize=(15, 10))
+    sns.barplot(data=incidents, x="state", y="value", hue="incident", ax = ax, palette=["#1f77b4", "grey"])
+    for s in ['top', 'right']:
+        ax.spines[s].set_visible(False)
+    fig_bar.text(0.15, 0.95, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=20)
     st.write(fig_bar)
 
     st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states")
