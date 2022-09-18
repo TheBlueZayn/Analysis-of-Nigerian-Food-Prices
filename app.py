@@ -303,7 +303,7 @@ with causes:
    
 
     # Plot line plot
-    fig_cov1, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
+    fig_cov1, (ax1, ax2) = plt.subplots(1,2,figsize=(30,15))
     ax1.plot(price_data["Beans (brown)"], label= "Brown Beans")
     ax1.plot(price_data["Beans (white black eye)"], label="White Beans")
 
@@ -354,7 +354,7 @@ with causes:
     # Conclusion
     st.markdown("**In Conclusion**, there is a price imbalance in Nigeria as food-producing states sell at cheaper price but due to insecurity, inflation and other economic indicator the prices changes as it gets to other states in the country.")
     st.markdown("Thank you for reading")
-    st.markdown("View codes and data on my [github]()")
+    st.markdown("View codes and data on my [github](https://github.com/TheBlueZayn/Analysis-of-Nigerian-Food-Prices)")
     st.markdown("You can connect with me [here](https://www.linkedin.com/in/zaynab-arowosegbe-b292781a4/)")
 
 
@@ -366,21 +366,21 @@ with causes:
     fig, ax = plt.subplots(figsize=(20,15))
     sns.heatmap(corr, ax=ax)
     st.write(fig)
-    st.markdown("From the visualisation, we can observe a:")
-    st.markdown("**Positive correlation between**")
-    st.markdown("- Both forms of bread, beans, gaari and maaize")
-    st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
-    st.markdown("- Groundnut oil, palm oil and vegetable oil")
-    st.markdown("- Irish potato, palm oil and vegetable oil")
-    st.markdown("- Milk, bread, veg oil and wheat flour")
-    st.markdown("- Maize and vegetable oil")
-    st.markdown("**Negative correlation between**")
-    st.markdown("- Fresh mudfish and dried mudfish")
-    st.markdown("- Iced sardine, dried fish sardine and catfish")
+    # st.markdown("From the visualisation, we can observe a:")
+    # st.markdown("**Positive correlation between**")
+    # st.markdown("- Both forms of bread, beans, gaari and maaize")
+    # st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
+    # st.markdown("- Groundnut oil, palm oil and vegetable oil")
+    # st.markdown("- Irish potato, palm oil and vegetable oil")
+    # st.markdown("- Milk, bread, veg oil and wheat flour")
+    # st.markdown("- Maize and vegetable oil")
+    # st.markdown("**Negative correlation between**")
+    # st.markdown("- Fresh mudfish and dried mudfish")
+    # st.markdown("- Iced sardine, dried fish sardine and catfish")
 
 
     st.markdown("**Influence of Covid-19**")
-    fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
+    fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(30,15))
     ax1.plot(price_data["Rice agric"], label="Agric Rice")
     ax1.plot(price_data["Rice local (ofada)"], label="Ofada Rice")
     ax1.plot(price_data["Rice Medium Grained"], label="Medium Grained Rice")
