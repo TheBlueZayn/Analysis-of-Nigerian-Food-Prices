@@ -130,7 +130,7 @@ with analyse_data:
     fig_line.text(0.67, 0.14, high[dic[food_item]], fontsize=15)
     fig_line.text(0.67, 0.17, low[dic[food_item]], fontsize=15)
     fig_line.text(0.67, 0.20, "Current national price at " + "₦"+ str(price), fontsize=15)
-    fig_line.text(0.67, 0.26, label[dic[food_item]], fontsize=13)
+    fig_line.text(0.67, 0.23, label[dic[food_item]], fontsize=15)
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
     st.write(fig_line)    
@@ -173,9 +173,9 @@ with geo_zones:
                format = [None, ",.2f"],
                prefix = [None, '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦', '₦']))
                 ])
-    #fig.update_layout(height=700, width=900, autosize=False)
+    fig.update_layout(height=900, width = 700, autosize=False)
     fig.update_traces(cells_font=dict(size = 15))
-    st.markdown("**(Highest Prices in Red)**")
+    #st.markdown("**(Highest Prices in Red)**")
     st.markdown("The prices of **ten** food items are compared across the geopolitical zones, the highest prices are annotated in red.")
     st.markdown("We can observe that food is generally more expensive in the **south east** with north-west coming in next. Food is cheaper in the **north central** except **yam** that is cheaper in North East (*Taraba is one of the yam-producing states in the country.*)")
     st.markdown("The north central comprises the major food-producing states like Benue, Nassarawa, Platea and Niger.")
@@ -185,15 +185,15 @@ with geo_zones:
     st.write(fig)
 
 with six_states:
-    st.header("Current percentage monthly and yearly increase in the price of food items on a national level")
-    st.markdown("The top 5 food items that increased the **most** from last month and their corresponding yearly increase.")
-    st.markdown("- **MoM** = Month on Month")
-    st.markdown("- **YoY** = Year on Year")
-    st.write(m_y.head())
-    st.markdown("The top 5 food items that increased the **least** from last month and their corresponding yearly increase.")
-    st.write(m_y.tail())
+    #st.header("Current percentage monthly and yearly increase in the price of food items on a national level")
+    #st.markdown("The top 5 food items that increased the **most** from last month and their corresponding yearly increase.")
+    #st.markdown("- **MoM** = Month on Month")
+    #st.markdown("- **YoY** = Year on Year")
+    #st.write(m_y.head())
+    #st.markdown("The top 5 food items that increased the **least** from last month and their corresponding yearly increase.")
+    #st.write(m_y.tail())
     st.subheader("Comparing current price (July 2022) of six food items across six states")
-    st.markdown("The current price of **six** major food items (*from high and low percentage increase*) of a state in the six geopolitical zones is visualised.")
+    st.markdown("Some food items have a high monthly and yearly increase, the current price of **six** major food items (*from high and low percentage increase*) of a state in the six geopolitical zones is visualised.")
     st.markdown("This emphasises the price inflation in the southeast state (**Imo**) compared to other states like **Borno** that sells at the least price.")
     # First plot
     fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
@@ -216,6 +216,8 @@ with six_states:
         ax2.spines[s].set_visible(False)
     st.write(fig1)
     st.write("               ")
+    st.write("               ")
+    st.write("               ")
 
     fig2, (ax3, ax4) = plt.subplots(1,2, figsize=(40,25))
     # Thirdplot
@@ -237,7 +239,9 @@ with six_states:
     for s in ['top', 'right']:
         ax4.spines[s].set_visible(False)
     st.write(fig2)
-    st.write("         ")
+    st.write("       ")
+    st.write("       ")
+    st.write("       ")
 
 
     # Fifth plot
@@ -260,40 +264,25 @@ with six_states:
     for s in ['top', 'right']:
         ax6.spines[s].set_visible(False)
     st.write(fig3)
-    st.write("       ")
+
 
    
 with correl:
     st.header("What are the correlations among the various food items?")
-    st.markdown("Correlation is a **statistical measure** that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate). A heatmap is used to visualise the correlation matrix. ")
-    corr = price_data.corr()
-    fig, ax = plt.subplots(figsize=(20,15))
-    sns.heatmap(corr, ax=ax)
-    st.write(fig)
-
+    st.markdown("Correlation is a **statistical measure** that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate). **A heatmap is used to visualise the correlation matrix**.")
     st.markdown("The closer the correlation coefficient is to 1, the more correlated they are. A correlation coefficient of +1 means a positive correlation (they both increase and decrease together, *the lightest shade*). A correlation coefficient of -1 means a negative correlation (if one increases, the other decreases, *the darkest shade*).")
-    st.markdown("From the visualisation, we can observe a:")
-    st.markdown("**Positive correlation between**")
-    st.markdown("- Both forms of bread, beans, gaari and maaize")
-    st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
-    st.markdown("- Groundnut oil, palm oil and vegetable oil")
-    st.markdown("- Irish potato, palm oil and vegetable oil")
-    st.markdown("- Milk, bread, veg oil and wheat flour")
-    st.markdown("- Maize and vegetable oil")
-    st.markdown("**Negative correlation between**")
-    st.markdown("- Fresh mudfish and dried mudfish")
-    #st.markdown("- Dried mudfish, smoked catfish and dried fish")
-    st.markdown("- Iced sardine, dried fish sardine and catfish")
-    #st.markdown("An interesting correlation is between **fresh mudfish** and **dried mudfish**")
+    st.markdown("*See Heatmap in appendix*")
+    st.markdown("**Correlation between dry and fresh mudfish**")
+    # visualise
     fig_mud, ax = plt.subplots(figsize=(15,10))
     ax.plot(price_data["Mudfish (aro) fresh"], label="Fresh Mudfish")
-    ax.plot(price_data["Mudfish (dried)"], label="Dried Mudfish")
+    ax.plot(price_data["Mudfish (aro) dried"], label="Dried Mudfish")
     plt.ylabel("Price in Naira (₦)", fontsize=15)
     plt.xlabel("Year", fontsize=15)
     ax.legend(loc="lower right")
-    fig.text(0.38, 1.0,"As interesting negative correlation is observed from the data.", fontsize=15)
-    fig.text(0.38, 0.95,"This is between dried mudfish and fresh mudfish ", fontsize=15, fontweight="bold")
-    fig.text(0.38, 0.90,"The price of fresh mudfish is is about half the price of it’s dried counterpart.", fontsize=15)
+    fig_mud.text(0.38, 1, "As interesting negative correlation is observed from the data.", fontsize=15)
+    fig_mud.text(0.38, 0.95,"This is between dried mudfish and fresh mudfish ", fontsize=15, fontweight="bold")
+    fig_mud.text(0.38, 0.90,"The price of fresh mudfish is is about half the price of it’s dried counterpart.", fontsize=15)
     for s in ['top', 'right']:
          ax.spines[s].set_visible(False)
     st.write(fig_mud)
@@ -309,23 +298,22 @@ with causes:
     st.markdown("I'll be looking into some other factors I feel has affected food prices")
 
 
-    # Covid 19 influence
-    st.subheader("Effect of Covid19 pandemic")
+    # Covid-19 influence
+    st.subheader("Effect of Covid-19 pandemic")
     st.markdown("Introduce covid19")
     st.markdown("On a general scale, all the food prices had a rise from **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
     st.markdown("- White and yellow gaari")
     st.markdown("- White and yellow maize")
     st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
     st.markdown("- Vegetable oil, groundnut oil and Palm oil")
-    st.markdown("It was also observe that they were majorly grains and their line plots are shown below")
-    #st.markdown("")
+    st.markdown("It was also observe that they were majorly grains and two of them are shown below. See more visualisation in the appendix")
+   
 
     # Plot line plot
     fig_cov1, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
-    ax1.plot(price_data["Beans (brown)"], label="Brown Beans")
+    ax1.plot(price_data["Beans (brown)"], label= "Brown Beans")
     ax1.plot(price_data["Beans (white black eye)"], label="White Beans")
-    #ax1.axvline("2020-03-31",color ='grey', lw = 0.5, alpha = 0.75)
-    #ax1.text(0.5, 230, "March 2020")
+
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
     ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=18)
@@ -333,37 +321,12 @@ with causes:
 
     ax2.plot(price_data["Maize grain white"], label="White Maize")
     ax2.plot(price_data["Maize grain yellow"], label="Yellow Maize")
-    #ax2.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
-    #ax2.text(0.5, 129, "November 2019")
+
     for s in ['top', 'right']:
       ax2.spines[s].set_visible(False)
     ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=18)
     ax2.legend()
     st.write(fig_cov1)
-
-
-    fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
-    ax1.plot(price_data["Rice agric"], label="Agric Rice")
-    ax1.plot(price_data["Rice local (ofada)"], label="Ofada Rice")
-    ax1.plot(price_data["Rice Medium Grained"], label="Medium Grained Rice")
-    ax1.plot(price_data["Broken Rice (Ofada)"], label="Broken Rice")
-    #ax1.axvline("2019-11-30",color ='grey', lw = 0.5, alpha = 0.75)
-    #ax1.text("2019-12-31", 260, "November 2019")
-    for s in ['top', 'right']:
-         ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=18)
-    ax1.legend()
-
-    ax2.plot(price_data["Vegetable oil"], label="Vegetable Oil")
-    ax2.plot(price_data["Palm oil"], label="Palm Oil")
-    ax2.plot(price_data["Groundnut oil"], label="Groundnut Oil")
-    #ax2.axvline("2020-01-31",color ='grey', lw = 0.5, alpha = 0.75)
-    #ax2.text("2020-02-28", 400, "January 2020")
-    for s in ['top', 'right']:
-         ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=18)
-    ax2.legend()
-    st.write(fig_cov2)
 
 
     # Attacks
@@ -411,6 +374,46 @@ with causes:
     st.markdown("Thank you for reading")
     st.markdown("You can connect with me [here](https://www.linkedin.com/in/zaynab-arowosegbe-b292781a4/)")
 
+    st.subheader("Appendix")
+    st.markdown("**Correlation Heatmap**")
+    corr = price_data.corr()
+    fig, ax = plt.subplots(figsize=(20,15))
+    sns.heatmap(corr, ax=ax)
+    st.write(fig)
+    st.markdown("From the visualisation, we can observe a:")
+    st.markdown("**Positive correlation between**")
+    st.markdown("- Both forms of bread, beans, gaari and maaize")
+    st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
+    st.markdown("- Groundnut oil, palm oil and vegetable oil")
+    st.markdown("- Irish potato, palm oil and vegetable oil")
+    st.markdown("- Milk, bread, veg oil and wheat flour")
+    st.markdown("- Maize and vegetable oil")
+    st.markdown("**Negative correlation between**")
+    st.markdown("- Fresh mudfish and dried mudfish")
+    st.markdown("- Iced sardine, dried fish sardine and catfish")
+
+
+    st.markdown("Influence on Covid-19")
+    fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
+    ax1.plot(price_data["Rice agric"], label="Agric Rice")
+    ax1.plot(price_data["Rice local (ofada)"], label="Ofada Rice")
+    ax1.plot(price_data["Rice Medium Grained"], label="Medium Grained Rice")
+    ax1.plot(price_data["Broken Rice (Ofada)"], label="Broken Rice")
+
+    for s in ['top', 'right']:
+         ax1.spines[s].set_visible(False)
+    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=18)
+    ax1.legend()
+
+    ax2.plot(price_data["Vegetable oil"], label="Vegetable Oil")
+    ax2.plot(price_data["Palm oil"], label="Palm Oil")
+    ax2.plot(price_data["Groundnut oil"], label="Groundnut Oil")
+
+    for s in ['top', 'right']:
+         ax2.spines[s].set_visible(False)
+    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=18)
+    ax2.legend()
+    st.write(fig_cov2)
 
 
 
