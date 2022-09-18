@@ -316,7 +316,7 @@ with causes:
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=18)
+    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=18, fontweight="bold")
     ax1.legend()
 
     ax2.plot(price_data["Maize grain white"], label="White Maize")
@@ -324,31 +324,15 @@ with causes:
 
     for s in ['top', 'right']:
       ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=18)
+    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=18, fontweight="bold")
     ax2.legend()
     st.write(fig_cov1)
 
 
     # Attacks
-    st.subheader("Influence of Insecurities in the Country")
-    st.markdown("In Nigeria, the leading food producing states include: Niger, Kano, Jigawa, Zamfara,Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe States (NAERL, 2011) and the number of attacks in each state in the last 9 years is visualised")
-    #st.markdown("**States with the most frequent attacks (2013-2021)**")
-    # Plot map
-    fig_geo = px.scatter_geo(
-    attack, lat="lat", lon="lon",
-    size="attacks", 
-    color="deaths",
-    hover_name="state",
-    fitbounds="locations"
-    )
-    fig_geo.update_layout(title="(Hover for State name)<br>Size of circle represents number of attacks")
-    fig_geo.update_geos(
-    visible=False, resolution=110,
-    showcountries=True, countrycolor="Black"
-    )
-    st.write(fig_geo)
+    st.subheader("Effect of Insecurities in the Country")
+    st.markdown("In Nigeria, the leading food producing states include: Niger, Kano, Jigawa, Zamfara, Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe States (NAERL, 2011) and the top attacked states in the last 9 years is visualised")
 
-    st.subheader("Most Attacked States (2013-2021)")
     incidents = pd.melt(most_attacked, id_vars = ["state"], value_vars=["attacks", "deaths"], var_name="incident", value_name="value")
     fig_bar, ax = plt.subplots(figsize=(15, 10))
     sns.barplot(data=incidents, x="state", y="value", hue="incident", ax = ax, palette=["#1f77b4", "grey"])
@@ -356,6 +340,7 @@ with causes:
         ax.spines[s].set_visible(False)
     fig_bar.text(0.15, 0.95, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=20)
     st.write(fig_bar)
+    st.markdown("*See appendix for distribution accross the states*")
 
     st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states")
     st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
@@ -374,6 +359,9 @@ with causes:
     st.markdown("Thank you for reading")
     st.markdown("You can connect with me [here](https://www.linkedin.com/in/zaynab-arowosegbe-b292781a4/)")
 
+
+
+    # Appendix
     st.subheader("Appendix")
     st.markdown("**Correlation Heatmap**")
     corr = price_data.corr()
@@ -402,7 +390,7 @@ with causes:
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=18)
+    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=18, fontweight="bold")
     ax1.legend()
 
     ax2.plot(price_data["Vegetable oil"], label="Vegetable Oil")
@@ -411,9 +399,27 @@ with causes:
 
     for s in ['top', 'right']:
          ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=18)
+    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=18, fontweight="bold")
     ax2.legend()
     st.write(fig_cov2)
+
+
+
+    # Plot map
+    fig_geo = px.scatter_geo(
+    attack, lat="lat", lon="lon",
+    size="attacks", 
+    color="deaths",
+    hover_name="state",
+    fitbounds="locations"
+    )
+    fig_geo.update_layout(title="(Hover for State name)<br>Size of circle represents number of attacks")
+    fig_geo.update_geos(
+    visible=False, resolution=110,
+    showcountries=True, countrycolor="Black"
+    )
+    st.markdown("**Distribution of attcks accross Nigeria (2013 - 2021)**")
+    st.write(fig_geo)
 
 
 
