@@ -64,11 +64,6 @@ with dataset:
     st.header("About the dataset")
     st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country at the end of every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
     st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data from [github](https://github.com/kfalayi/Food-price-Nigeria/blob/main/attacks.xlsx).I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years.")
-    #st.markdown("Below are first five rows from some tables of the split dataset")
-
-    # Show data
-    #st.write(price_data.head())
-    #st.write(low_high.head())
 
     
 with analyse_data:
@@ -302,11 +297,9 @@ with causes:
     st.subheader("Effect of Covid-19 pandemic")
     st.markdown("Introduce covid19")
     st.markdown("On a general scale, all the food prices had a rise from **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
-    st.markdown("- White and yellow gaari")
-    st.markdown("- White and yellow maize")
-    st.markdown("- The four forms of rice (imported, ofada, broken and medium grained)")
-    st.markdown("- Vegetable oil, groundnut oil and Palm oil")
-    st.markdown("It was also observe that they were majorly grains and two of them are shown below. See more visualisation in the appendix")
+    st.markdown("- White,yellow gaari, White, yellow maize, the four forms of rice, Vegetable oil, groundnut oil and Palm oil")
+    st.markdown("It was also observe that they were majorly grains and two of them are shown below.")
+    st.markdown("*See more visualisation on other food item in the appendix*")
    
 
     # Plot line plot
@@ -316,7 +309,7 @@ with causes:
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=18, fontweight="bold")
+    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=20, fontweight="bold")
     ax1.legend()
 
     ax2.plot(price_data["Maize grain white"], label="White Maize")
@@ -324,25 +317,28 @@ with causes:
 
     for s in ['top', 'right']:
       ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=18, fontweight="bold")
+    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=20, fontweight="bold")
     ax2.legend()
     st.write(fig_cov1)
+    st.markdown("From the plot above, we can observe a sharp **rise** in the price of both grains around early 2020 which was the start of covid19 pandemic in the country")
 
 
     # Attacks
     st.subheader("Effect of Insecurities in the Country")
     st.markdown("In Nigeria, the leading food producing states include: Niger, Kano, Jigawa, Zamfara, Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe States (NAERL, 2011) and the top attacked states in the last 9 years is visualised")
 
+    # plot barplot
     incidents = pd.melt(most_attacked, id_vars = ["state"], value_vars=["attacks", "deaths"], var_name="incident", value_name="value")
     fig_bar, ax = plt.subplots(figsize=(15, 10))
     sns.barplot(data=incidents, x="state", y="value", hue="incident", ax = ax, palette=["#1f77b4", "grey"])
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
+    ax.xaxis.set_tick_params(labelsize = 20)
     fig_bar.text(0.15, 0.95, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=20)
     st.write(fig_bar)
-    st.markdown("*See appendix for distribution accross the states*")
+    st.markdown("*See appendix for distribution accross the country*")
 
-    st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states")
+    st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states and the number of attacks per state is way higher than the number of attacks")
     st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
     
 
@@ -354,9 +350,11 @@ with causes:
     st.markdown("From the values in the last three years, we can observe that the health of the country is declining and there is an increase in CPI inflation rate.")
     st.markdown("A consumer price index (CPI) is estimated as a series of summary measures of the period-to-period proportional change in the prices of a fixed set of consumer goods and services of constant quantity and characteristics, acquired, used or paid for by the reference population.")
     st.markdown("According to an [article](https://www.premiumtimesng.com/news/headlines/554166-updated-nigerias-inflation-rate-surges-17-year-high-to-20-5.html), the data from [Nigerian Bureau of statistics](https://www.nigerianstat.gov.ng/) reported that Nigeria’s inflation rate surged to 20.52% in August 2022, the highest since September 2005")
+    
     # Conclusion
     st.markdown("**In Conclusion**, there is a price imbalance in Nigeria as food-producing states sell at cheaper price but due to insecurity, inflation and other economic indicator the prices changes as it gets to other states in the country.")
     st.markdown("Thank you for reading")
+    st.markdown("View codes and data on my [github]()")
     st.markdown("You can connect with me [here](https://www.linkedin.com/in/zaynab-arowosegbe-b292781a4/)")
 
 
@@ -381,7 +379,7 @@ with causes:
     st.markdown("- Iced sardine, dried fish sardine and catfish")
 
 
-    st.markdown("Influence on Covid-19")
+    st.markdown("**Influence of Covid-19**")
     fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(20,10))
     ax1.plot(price_data["Rice agric"], label="Agric Rice")
     ax1.plot(price_data["Rice local (ofada)"], label="Ofada Rice")
@@ -390,7 +388,7 @@ with causes:
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=18, fontweight="bold")
+    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=20, fontweight="bold")
     ax1.legend()
 
     ax2.plot(price_data["Vegetable oil"], label="Vegetable Oil")
@@ -399,7 +397,7 @@ with causes:
 
     for s in ['top', 'right']:
          ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=18, fontweight="bold")
+    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=20, fontweight="bold")
     ax2.legend()
     st.write(fig_cov2)
 
