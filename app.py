@@ -36,7 +36,7 @@ current_price = pd.read_csv("current_price_six_states.csv")
 m_y = pd.read_csv("MoM_YoY.csv")
 
 # Data 6
-attack = pd.read_csv("attacks_deaths .csv")
+attack = pd.read_csv("attacks_and_deaths .csv")
 
 # Data 7
 most_attacked= attack.sort_values(by=['attacks'], ascending=False)[:10]
@@ -276,8 +276,8 @@ with correl:
     plt.xlabel("Year", fontsize=15)
     ax.legend(loc="lower right")
     fig_mud.text(0.38, 1, "As interesting negative correlation is observed from the data.", fontsize=15)
-    fig_mud.text(0.38, 0.95,"This is between dried mudfish and fresh mudfish ", fontsize=15, fontweight="bold")
-    fig_mud.text(0.38, 0.90,"The price of fresh mudfish is is about half the price of it’s dried counterpart.", fontsize=15)
+    fig_mud.text(0.38, 0.95,"This is between dried mudfish and fresh mudfish ", fontsize=15)
+    fig_mud.text(0.38, 0.90,"Fresh mudfish is cheaper than dried mudfish", fontsize=15, fontweight="bold")
     for s in ['top', 'right']:
          ax.spines[s].set_visible(False)
     st.write(fig_mud)
