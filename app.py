@@ -125,7 +125,7 @@ with analyse_data:
     fig_line.text(0.67, 0.14, high[dic[food_item]], fontsize=15)
     fig_line.text(0.67, 0.17, low[dic[food_item]], fontsize=15)
     fig_line.text(0.67, 0.20, "Current national price at " + "₦"+ str(price), fontsize=15)
-    fig_line.text(0.67, 0.23, label[dic[food_item]], fontsize=15)
+    fig_line.text(0.67, 0.23, label[dic[food_item]] + " as at July 2022", fontsize=15)
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
     st.write(fig_line)    
