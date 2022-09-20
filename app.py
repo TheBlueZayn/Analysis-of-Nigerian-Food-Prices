@@ -69,7 +69,7 @@ with dataset:
     
 with analyse_data:
     st.header("Analysis of the various food items")
-    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive as at July 2022 are annotated on the graph.")
+    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive as at July 2022 are annotated on the graph. The grains are **sold loose** and this means it is nit prepacked and is sold by measurement of thr grain.")
     # Create input colums
     sel_col, disp_col = st.columns(2)
     price_data.set_index("Date", inplace=True)
@@ -172,9 +172,7 @@ with geo_zones:
     fig.update_layout(height=900, width = 700, autosize=False)
     fig.update_traces(cells_font=dict(size = 15))
     #st.markdown("**(Highest Prices in Red)**")
-    st.markdown("The prices of **ten** food items are compared across the geopolitical zones, the highest prices are annotated in red.")
-    st.markdown("We can observe that food is generally more expensive in the **south east** with north-west coming in next. Food is cheaper in the **north central** except **yam** that is cheaper in North East (*Taraba is one of the yam-producing states in the country.*)")
-    st.markdown("The north central comprises the major food-producing states like Benue, Nassarawa, Platea and Niger.")
+    st.markdown("The prices of **ten** food items are compared across the geopolitical zones, the highest prices are annotated in red. We can observe that food is generally more expensive in the **south east** with north-west coming in next. Food is cheaper in the **north central** except **yam** that is cheaper in North East (*Taraba is one of the yam-producing states in the country.*) The **north** central comprises the major food-producing states like Benue, Nassarawa, Platea and Niger.")
     st.markdown("(*View table in full screen mode to better see the values or scroll if viewing on mobile*)")
     st.markdown("**Highest prices in red**")
     #st.markdown("<p style="color: red;">Highest prices in red</p>")
@@ -190,7 +188,7 @@ with six_states:
     #st.write(m_y.tail())
     st.subheader("Comparing current price (July 2022) of six food items across six states")
     st.markdown("Some food items have a high monthly and yearly increase, the current price of **six** major food items (*from high and low percentage increase*) of a state in the six geopolitical zones is visualised.")
-    st.markdown("This emphasises the price inflation in the southeast state (**Imo**) compared to other states like **Borno** that sells at the least price.")
+    st.markdown("This emphasises the price inflation in the southeast state (**Imo**) compared to other states like **Borno** that sells at a much lesser price.")
     # First plot
     fig1, (ax1, ax2) = plt.subplots(1,2, figsize=(40,25))
     color_1 = ["grey" for i in range(6)]
@@ -273,12 +271,13 @@ with correl:
     fig_mud, ax = plt.subplots(figsize=(15,10))
     ax.plot(price_data["Mudfish (aro) fresh"], label="Fresh Mudfish")
     ax.plot(price_data["Mudfish (aro) dried"], label="Dried Mudfish")
-    plt.ylabel("Price in Naira (₦)", fontsize=15)
+    plt.ylabel("Price in Naira (₦)", fontsize=18)
     plt.xlabel("Year", fontsize=15)
-    ax.legend(loc="lower right")
-    fig_mud.text(0.38, 1, "As interesting negative correlation is observed from the data.", fontsize=15)
-    fig_mud.text(0.38, 0.95,"This is between dried mudfish and fresh mudfish ", fontsize=15)
-    fig_mud.text(0.38, 0.90,"Fresh mudfish is cheaper than dried mudfish", fontsize=15, fontweight="bold")
+    ax.legend(loc="lower right", fontsize=15)
+    ax.tick_params(axis='y', labelsize=13)
+    fig_mud.text(0.38, 1, "As interesting negative correlation is observed from the data.", fontsize=18)
+    fig_mud.text(0.38, 0.95,"This is between dried mudfish and fresh mudfish ", fontsize=18)
+    fig_mud.text(0.38, 0.90,"Fresh mudfish is cheaper than dried mudfish", fontsize=18, fontweight="bold")
     for s in ['top', 'right']:
          ax.spines[s].set_visible(False)
     st.write(fig_mud)
@@ -291,42 +290,42 @@ with causes:
     st.markdown("- Russia-Ukraine crisis (*strain on the food supply chain as Nigeria imports some agricultural products*)")
     st.markdown("- Insecurity and")
     st.markdown("- Foreign exchange problem")
-    st.markdown("I'll be looking into some other factors I feel has affected food prices")
+    st.markdown("I'll be looking into some other factors.")
 
 
     # Covid-19 influence
     st.subheader("Effect of Covid-19 pandemic")
-    st.markdown("Introduce covid19")
+    #st.markdown("Introduce covid19")
     st.markdown("On a general scale, all the food prices had a rise from **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
-    st.markdown("- White,yellow gaari, White, yellow maize, the four forms of rice, Vegetable oil, groundnut oil and Palm oil")
-    st.markdown("It was also observe that they were majorly grains and two of them are shown below.")
-    st.markdown("*See more visualisation on other food item in the appendix*")
+    st.markdown("- White, yellow gaari, White, yellow maize, the four forms of rice, Vegetable oil, groundnut oil and Palm oil")
+    st.markdown("It is also observe that they were majorly grains and two of them are shown below.")
+    st.markdown("*See more visualisation on the other food item in the appendix*")
    
 
     # Plot line plot
     fig_cov1, (ax1, ax2) = plt.subplots(1,2,figsize=(30,15))
     ax1.plot(price_data["Beans (brown)"], label= "Brown Beans")
-    ax1.plot(price_data["Beans (white black eye)"], label="White Beans")
+    ax1.plot(price_data["Beans (white black eye)"], label="White Beans", color="c")
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=20, fontweight="bold")
-    ax1.legend()
+    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=23, fontweight="bold")
+    ax1.legend(fontsize=15)
 
     ax2.plot(price_data["Maize grain white"], label="White Maize")
-    ax2.plot(price_data["Maize grain yellow"], label="Yellow Maize")
+    ax2.plot(price_data["Maize grain yellow"], label="Yellow Maize", color="c")
 
     for s in ['top', 'right']:
       ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=20, fontweight="bold")
-    ax2.legend()
+    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=23, fontweight="bold")
+    ax2.legend(fontsize=15)
     st.write(fig_cov1)
     st.markdown("From the plot above, we can observe a sharp **rise** in the price of both grains around early 2020 which was the start of covid19 pandemic in the country")
 
 
     # Attacks
     st.subheader("Effect of Insecurities in the Country")
-    st.markdown("In Nigeria, the leading food producing states include: Niger, Kano, Jigawa, Zamfara, Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe States (NAERL, 2011) and the top attacked states in the last 9 years is visualised")
+    st.markdown("In Nigeria, the leading food producing states include; Niger, Kano, Jigawa, Zamfara, Kebbi, Sokoto, Katsina, Kaduna, Adamawa, Yobe, Borno, Taraba, Plateau, Nasarawa, Bauchi, and Gombe and the top attacked states in the country in the last 9 years is visualised")
 
     # plot barplot
     incidents = pd.melt(most_attacked, id_vars = ["state"], value_vars=["attacks", "deaths"], var_name="incident", value_name="value")
@@ -335,6 +334,7 @@ with causes:
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
     ax.xaxis.set_tick_params(labelsize = 20)
+    plt.legend(fontsize=15)
     fig_bar.text(0.15, 0.95, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=20)
     st.write(fig_bar)
     st.markdown("*See appendix for distribution accross the country*")
@@ -382,24 +382,24 @@ with causes:
 
     st.markdown("**Influence of Covid-19**")
     fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(30,15))
-    ax1.plot(price_data["Rice agric"], label="Agric Rice")
-    ax1.plot(price_data["Rice local (ofada)"], label="Ofada Rice")
+    ax1.plot(price_data["Rice agric"], label="Agric Rice", color="c")
+    ax1.plot(price_data["Rice local (ofada)"], label="Ofada Rice", color="grey")
     ax1.plot(price_data["Rice Medium Grained"], label="Medium Grained Rice")
-    ax1.plot(price_data["Broken Rice (Ofada)"], label="Broken Rice")
+    ax1.plot(price_data["Broken Rice (Ofada)"], label="Broken Rice", color="#4a90e2")
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=20, fontweight="bold")
-    ax1.legend()
+    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=23, fontweight="bold")
+    ax1.legend(fontsize=15)
 
     ax2.plot(price_data["Vegetable oil"], label="Vegetable Oil")
-    ax2.plot(price_data["Palm oil"], label="Palm Oil")
-    ax2.plot(price_data["Groundnut oil"], label="Groundnut Oil")
+    ax2.plot(price_data["Palm oil"], label="Palm Oil", color="grey")
+    ax2.plot(price_data["Groundnut oil"], label="Groundnut Oil", color="c")
 
     for s in ['top', 'right']:
          ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=20, fontweight="bold")
-    ax2.legend()
+    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=23, fontweight="bold")
+    ax2.legend(fontsize=15)
     st.write(fig_cov2)
 
 
