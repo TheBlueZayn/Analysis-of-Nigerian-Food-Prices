@@ -333,7 +333,7 @@ with causes:
     sns.barplot(data=incidents, x="state", y="value", hue="incident", ax = ax, palette=["#1f77b4", "grey"])
     for s in ['top', 'right']:
         ax.spines[s].set_visible(False)
-    ax.xaxis.set_tick_params(labelsize = 20)
+    ax.xaxis.set_tick_params(labelsize = 18)
     plt.legend(fontsize=15)
     fig_bar.text(0.15, 0.95, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=20)
     st.write(fig_bar)
