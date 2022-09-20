@@ -47,8 +47,9 @@ economic = pd.read_csv("economic-indicators.csv")
 with header:
     st.title("""Analysis of Nigerian Food Prices (January 2017 - July 2022)""")
     st.markdown("**Zaynab Arowosegbe**")
+    st.markdown("Do you know how wide the imbalance of food prices are in Nigeria? Read through to know more.")
     st.markdown("Nigeria has been facing food price inflation for the past few years, coupled with economic crises and poverty. it is also no news that the country has been fighting insecurity in forms of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities.")
-    st.markdown("In this report, I would analyse the prices of 42 food items, their average prices on a national level, state level and the price changes from January 2017 to July 2022 and would be answering the following questions:")
+    st.markdown("In this report, I would analyse the prices of 42 food items, their average prices on a national level, state level and the price changes from January 2017 to July 2022 and answering the following questions:")
     st.markdown("- What has been the trend of the prices across the years?")
     st.markdown("- What is the current average national price and what states have the lowest and highest price?")
     st.markdown("- What are the variations across the six geopolitical zones?")
@@ -62,13 +63,13 @@ with header:
 
 with dataset:
     st.header("About the dataset")
-    st.markdown("For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country at the end of every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
-    st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data from [github](https://github.com/kfalayi/Food-price-Nigeria/blob/main/attacks.xlsx).I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years.")
+    st.markdown("For this analysis, I used the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country at the end of every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
+    st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find was from [github](https://github.com/kfalayi/Food-price-Nigeria/blob/main/attacks.xlsx) which contain from data on different forms of violent activities in the country collated by the Council on Foreign Affairs from its security tracker. I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years.")
 
     
 with analyse_data:
     st.header("Analysis of the various food items")
-    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive are annotated on the graph.")
+    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive as at July 2022 are annotated on the graph.")
     # Create input colums
     sel_col, disp_col = st.columns(2)
     price_data.set_index("Date", inplace=True)
@@ -76,8 +77,8 @@ with analyse_data:
     food_item = sel_col.selectbox("Select the food item to analyse", options=['Agric eggs (medium size)', 'Agric egg (medium size)',
        'Beans (brown)', 'Beans (white black eye)', 'Beef (bone in)',
        'Beef (boneless)', 'Bread sliced 500g', 'Bread unsliced 500g',
-       'Broken Rice (Ofada)', 'Catfish (obokun) dried',
-       'Catfish (obokun) fresh', 'Catfish (obokun) smoked', 'Chicken Feet',
+       'Broken Rice (Ofada)', 'Catfish (dried)',
+       'Catfish (obokun) fresh', 'Catfish (smoked)', 'Chicken Feet',
        'Chicken Wings', 'Dried Fish Sardine',
        'Evaporated tinned milk carnation', 'Evaporated tinned milk(peak) ',
        'Frozen chicken', 'Gaari white', 'Gaari yellow', 'Groundnut oil',
