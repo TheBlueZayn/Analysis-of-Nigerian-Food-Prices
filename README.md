@@ -15,6 +15,7 @@ The original dataset contained extra information on the state with the lowest an
 
 - [prices.ipynb](https://github.com/TheBlueZayn/Analysis-of-Nigerian-Food-Prices/blob/main/prices.ipynb) contains the codes of analysis
 - [app.py](https://github.com/TheBlueZayn/Analysis-of-Nigerian-Food-Prices/blob/main/app.py) contains the codes to deploy on streamlit
+
 The following libraries were used;
 - Pandas for data wrangling and analysis
 - Matplotlib for visualisations
