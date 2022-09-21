@@ -155,7 +155,7 @@ with geo_zones:
       [579.927014,2115.790993,505.5209314,285.6521444,601.0026235,850.4868658,463.0285133,609.7815379,1057.081982,468.6454505],
       [598.0036126,2084.20833,502.2926772,296.5013584,441.9778229,1014.104108,519.6446083,496.2086505,1155.383191,538.0165566]]
 
-    font_color = ['rgb(40,40,40)'] + [['#BO202c' if v == 853.1927586 or v == 2579.403467 or v == 645.9435902 or 
+    font_color = ['rgb(40,40,40)'] + [['rgb(255,0,0)' if v == 853.1927586 or v == 2579.403467 or v == 645.9435902 or 
                                                      v ==  521.499012 or v == 601.0026235 or v == 1094.023935 or
                                                      v == 796.0259923 or v == 678.8038337 or v == 1342.914286 or
                                                      v == 543.979936
@@ -298,9 +298,9 @@ with causes:
     st.subheader("Effect of Covid-19 pandemic")
     #st.markdown("Introduce covid19")
     st.markdown("On a general scale, all the food prices had a rise from **2021** but the prices of certain food items were geatly influenced by the covid19 pandemic as a huge rise is observed. The food items are;") 
-    st.markdown("- White, yellow gaari, White, yellow maize, the four forms of rice, Vegetable oil, groundnut oil and Palm oil")
+    st.markdown("- White, yellow gaari, White, yellow maize, the four forms of rice, vegetable oil, groundnut oil and Palm oil")
     st.markdown("It is also observe that they were majorly grains and two of them are shown below.")
-    st.markdown("*See more visualisation on the other food item in the appendix*")
+    st.markdown("*See more visualisations in the appendix*")
    
 
     # Plot line plot
@@ -313,7 +313,7 @@ with causes:
     ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=26, fontweight="bold")
     ax1.legend(fontsize=15)
     ax1.xaxis.set_tick_params(labelsize = 20)
-    fig_cov1.text(0.13, 0.78, "We can observe a steady rise at the beginning of 2020", fontsize=22)
+    fig_cov1.text(0.13, 0.78, "We can a steady rise at the beginning of 2020", fontsize=22)
 
     ax2.plot(price_data["Maize grain white"], label="White Maize")
     ax2.plot(price_data["Maize grain yellow"], label="Yellow Maize", color="c")
