@@ -309,18 +309,21 @@ with causes:
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=23, fontweight="bold")
+    ax1.set_title("Covid19 Pandemic Influence on Price of Beans", fontsize=26, fontweight="bold")
     ax1.legend(fontsize=15)
+    ax1.xaxis.set_tick_params(labelsize = 20)
+    fig_cov1.text(0.13, 0.78, "We can observe a steady rise at the beginning of 2020", fontsize=22)
 
     ax2.plot(price_data["Maize grain white"], label="White Maize")
     ax2.plot(price_data["Maize grain yellow"], label="Yellow Maize", color="c")
 
     for s in ['top', 'right']:
       ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=23, fontweight="bold")
+    ax2.set_title("Covid19 Pandemic Influence on Price of Maize", fontsize=26, fontweight="bold")
     ax2.legend(fontsize=15)
+    ax2.xaxis.set_tick_params(labelsize = 20)
     st.write(fig_cov1)
-    st.markdown("From the plot above, we can observe a sharp **rise** in the price of both grains around early 2020 which was the start of covid19 pandemic in the country")
+    st.markdown("From the plot above, we can observe a sharp **rise** in the price of both grains around **early 2020** which was the start of covid19 pandemic in the country")
 
 
     # Attacks
@@ -335,7 +338,9 @@ with causes:
         ax.spines[s].set_visible(False)
     ax.xaxis.set_tick_params(labelsize = 18)
     plt.legend(fontsize=15)
-    fig_bar.text(0.15, 0.95, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=20)
+    fig_bar.text(0.13, 0.92, "Borno and Zamfara are the most attacked state in Nigeria", fontsize=18)
+    fig_bar.text(0.13, 0.89, "The ratio of deaths to attacks is very high", fontsize=18)
+    fig_bar.text(0.11, 0.97, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=22, fontweight="semibold")
     st.write(fig_bar)
     st.markdown("*See appendix for distribution accross the country*")
 
@@ -346,7 +351,7 @@ with causes:
     # Economic indicators
     st.subheader("Economic Indicators")
     st.markdown("An economic indicator is a metric used to assess, measure, and evaluate the overall state of health of the economy at large.")
-    st.markdown("The economic indicators of Nigeria in the last three years is shown below")
+    st.markdown("The economic indicators of Nigeria in the last three years is shown below (*Scroll to see full table*)")
     st.write(economic)
     st.markdown("From the values in the last three years, we can observe that the health of the country is declining and there is an increase in CPI inflation rate.")
     st.markdown("A consumer price index (CPI) is estimated as a series of summary measures of the period-to-period proportional change in the prices of a fixed set of consumer goods and services of constant quantity and characteristics, acquired, used or paid for by the reference population.")
@@ -389,17 +394,21 @@ with causes:
 
     for s in ['top', 'right']:
          ax1.spines[s].set_visible(False)
-    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=23, fontweight="bold")
+    ax1.set_title("Covid19 Pandemic influence on Price of Rice", fontsize=26, fontweight="bold")
     ax1.legend(fontsize=15)
+    ax1.xaxis.set_tick_params(labelsize = 20)
 
     ax2.plot(price_data["Vegetable oil"], label="Vegetable Oil")
     ax2.plot(price_data["Palm oil"], label="Palm Oil", color="grey")
     ax2.plot(price_data["Groundnut oil"], label="Groundnut Oil", color="c")
+    ax2.xaxis.set_tick_params(labelsize = 20)
 
     for s in ['top', 'right']:
          ax2.spines[s].set_visible(False)
-    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=23, fontweight="bold")
+    ax2.set_title("Covid19 Pandemic influence on Price of Cooking Oil", fontsize=26, fontweight="bold")
     ax2.legend(fontsize=15)
+    fig_cov2.text(0.13, 0.75, "We can observe a steady rise", fontsize=22)
+    fig_cov2.text(0.13, 0.73, "at the beginning of 2020", fontsize=22)
     st.write(fig_cov2)
 
 
