@@ -36,7 +36,7 @@ current_price = pd.read_csv("current_price_six_states.csv")
 m_y = pd.read_csv("MoM_YoY.csv")
 
 # Data 6
-attack = pd.read_csv("attacks_and_deaths .csv")
+attack = pd.read_csv("attacks_and_deaths.csv")
 
 # Data 7
 most_attacked= attack.sort_values(by=['attacks'], ascending=False)[:10]
