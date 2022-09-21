@@ -18,6 +18,7 @@ causes  = st.container()
 # Data 1
 price_data = pd.read_csv("prices.csv")
 price_data["Date"] = pd.to_datetime(price_data["Date"], format="%d/%m/%Y")
+price_data = price_data.round(2)
 
 # Round values to 2 decimal place
 #price_data= price_data.round(2)
@@ -49,7 +50,7 @@ with header:
     st.markdown("**Zaynab Arowosegbe**")
     st.markdown("Do you know how wide the imbalance of food prices are in Nigeria?")
     st.markdown("Nigeria has been facing food price inflation for the past few years, coupled with economic crises and poverty. it is also no news that the country has been fighting insecurity in forms of insurgency, gang activities and an uptick in general social crimes. Analysis of available data shows that much of Nigeria's food-producing states are battling these violent activities.")
-    st.markdown("In this report, I would analyse the prices of 42 food items, their average prices on a national level, state level and the price changes from January 2017 to July 2022 and answering the following questions:")
+    st.markdown("In this report, I analysed the prices of 42 food items, their average prices on a national level, state level and the price changes from January 2017 to July 2022 and would be answering the following questions:")
     st.markdown("- What has been the trend of the prices across the years?")
     st.markdown("- What is the current average national price and what states have the lowest and highest price?")
     st.markdown("- What are the variations across the six geopolitical zones?")
@@ -63,13 +64,13 @@ with header:
 
 with dataset:
     st.header("About the dataset")
-    st.markdown("For this analysis, I used the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country at the end of every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
+    st.markdown("For this analysis, I used the data from Nigeria's National Bureau of Statistics [NBS](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country at the end of every month. This data has been consistent for more than 5 years, I used the food price index data from January 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis.")
     st.markdown("I needed another data that gives an insight into the security issues of Nigeria, the best I could find was from [github](https://github.com/kfalayi/Food-price-Nigeria/blob/main/attacks.xlsx) which contain from data on different forms of violent activities in the country collated by the Council on Foreign Affairs from its security tracker. I also used a dataset from from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years.")
 
     
 with analyse_data:
     st.header("Analysis of the various food items")
-    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive as at July 2022 are annotated on the graph. The grains are **sold loose** and this means it is nit prepacked and is sold by measurement of thr grain.")
+    st.markdown("The average national price of all the food items is visualised over the timeframe. The current national price and the states where the price is cheapest and most expensive as at July 2022 are annotated on the graph. The grains that are **sold loose** means it is not prepacked and is sold by measurement of the grains.")
     # Create input colums
     sel_col, disp_col = st.columns(2)
     price_data.set_index("Date", inplace=True)
@@ -154,7 +155,7 @@ with geo_zones:
       [579.927014,2115.790993,505.5209314,285.6521444,601.0026235,850.4868658,463.0285133,609.7815379,1057.081982,468.6454505],
       [598.0036126,2084.20833,502.2926772,296.5013584,441.9778229,1014.104108,519.6446083,496.2086505,1155.383191,538.0165566]]
 
-    font_color = ['rgb(40,40,40)'] + [['rgb(255,0,0)' if v == 853.1927586 or v == 2579.403467 or v == 645.9435902 or 
+    font_color = ['rgb(40,40,40)'] + [['#BO202c' if v == 853.1927586 or v == 2579.403467 or v == 645.9435902 or 
                                                      v ==  521.499012 or v == 601.0026235 or v == 1094.023935 or
                                                      v == 796.0259923 or v == 678.8038337 or v == 1342.914286 or
                                                      v == 543.979936
@@ -173,7 +174,7 @@ with geo_zones:
     fig.update_traces(cells_font=dict(size = 15))
     #st.markdown("**(Highest Prices in Red)**")
     st.markdown("The prices of **ten** food items are compared across the geopolitical zones, the highest prices are annotated in red. We can observe that food is generally more expensive in the **south east** with north-west coming in next. Food is cheaper in the **north central** except **yam** that is cheaper in North East (*Taraba is one of the yam-producing states in the country.*) The **north** central comprises the major food-producing states like Benue, Nassarawa, Platea and Niger.")
-    st.markdown("(*View table in full screen mode to better see the values or scroll if viewing on mobile*)")
+    st.markdown("(*View table in full screen mode or scroll if viewing on mobile*)")
     st.markdown("**Highest prices in red**")
     #st.markdown("<p style="color: red;">Highest prices in red</p>")
     st.write(fig)
