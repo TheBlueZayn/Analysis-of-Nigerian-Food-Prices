@@ -343,7 +343,7 @@ with causes:
     fig_bar.text(0.13, 0.89, "The ratio of deaths to attacks is very high", fontsize=18)
     fig_bar.text(0.11, 0.97, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=22, fontweight="semibold")
     st.write(fig_bar)
-    st.markdown("*See appendix for distribution accross the country*")
+    st.markdown("*See appendix for distribution of attacks accross the country*")
 
     st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states and the number of attacks per state is way higher than the number of attacks")
     st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
