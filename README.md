@@ -14,7 +14,7 @@ The [initial dataset](https://github.com/TheBlueZayn/Project/blob/main/Data%20So
 The original dataset contained extra information on the state with the lowest and highest price for a particular food item, the month-month increase, year-year increase, prices and geographcal zone and others. The individual data was split into smaller datesets to aid analysis. 
 
 - [prices.ipynb](https://github.com/TheBlueZayn/Analysis-of-Nigerian-Food-Prices/blob/main/prices.ipynb) contains the codes of analysis
-
+- [app.py](https://github.com/TheBlueZayn/Analysis-of-Nigerian-Food-Prices/blob/main/app.py) contains the codes to deploy on streamlit
 The following libraries were used;
 - Pandas for data wrangling and analysis
 - Matplotlib for visualisations
