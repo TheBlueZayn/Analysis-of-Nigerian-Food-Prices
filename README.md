@@ -6,7 +6,7 @@ Analysis of available data shows that much of Nigeria's food-producing states ar
 
 ## Datasets
 For this analysis, I depended on the data from Nigeria's National Bureau of Statistics [(NBS)](https://nigerianstat.gov.ng/elibrary/read/1241203), which collects and publishes food prices across the country every month. This data has been consistent for more than 5 years and in this analysis, I used the food price index data from 2017 to  July 2022. This main data was then split into smaller datasets used in the analysis. 
-I needed [another data](https://github.com/TheBlueZayn/Project/blob/main/Data%20Sources/attacks.xlsx) that gives an insight into the security issues of Nigeria, the best I could find is the Council on Foreign Affairs which collates data on different forms of violent activities in the country and I used its security tracker data.
+I needed another data that gives an insight into the security issues of Nigeria, the best I could find was from [github](https://github.com/kfalayi/Food-price-Nigeria/blob/main/attacks.xlsx) which contain from data on different forms of violent activities in the country collated by the Council on Foreign Affairs from its security tracker.
 I also used a [dataset](https://github.com/TheBlueZayn/Project/blob/main/economic-indicators.csv) from [OpenAfrica](https://africaopendata.org/nl/dataset/nigeria-employment-statistics/resource/e90dcf62-d944-4237-83b5-43228af0519f) that shows the economic indications of Nigeria in the last three years. 
 
 ## **Steps**
