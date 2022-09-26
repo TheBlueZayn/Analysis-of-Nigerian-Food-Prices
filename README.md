@@ -22,7 +22,7 @@ The following libraries were used;
 - Plotly for an interactive visualisation interface
 
 
-**View this analysis in an interactive form on the web [here](https://thebluezayn-project-app-9exv3v.streamlitapp.com/)**
+**View this analysis in an interactive form on the web [here](https://thebluezayn-analysis-of-nigerian-food-prices-app-gzo2up.streamlitapp.com/)**
 
 ## Contributions
 To make a contribution, create a new branch and make a pull request
