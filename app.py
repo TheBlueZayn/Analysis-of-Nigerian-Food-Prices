@@ -340,12 +340,12 @@ with causes:
     ax.xaxis.set_tick_params(labelsize = 18)
     plt.legend(fontsize=15)
     fig_bar.text(0.13, 0.92, "Borno and Zamfara are the most attacked state in Nigeria", fontsize=18)
-    fig_bar.text(0.13, 0.89, "The ratio of deaths to attacks is very high", fontsize=18)
+    fig_bar.text(0.13, 0.89, "The ratio of deaths to attacks is very high", fontsize=18, fontweight="semibold")
     fig_bar.text(0.11, 0.97, "Top 10 Most Attacked States and Death Count (2013 - 2021)", fontsize=22, fontweight="semibold")
     st.write(fig_bar)
     st.markdown("*See appendix for distribution of attacks accross the country*")
 
-    st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states and the number of attacks per state is way higher than the number of attacks")
+    st.markdown("From the plots above we can observe that the top attacked states are (**Borno and Zamfara**) which are both food-producing states and the number of deaths per state is way higher than the number of attacks")
     st.markdown("Insecurity in these part of the country would hinder the proper production and transportation of food items to other part of the country which leads to inflation and price imbalance.")
     
 
@@ -359,7 +359,7 @@ with causes:
     st.markdown("According to an [article](https://www.premiumtimesng.com/news/headlines/554166-updated-nigerias-inflation-rate-surges-17-year-high-to-20-5.html), the data from [Nigerian Bureau of statistics](https://www.nigerianstat.gov.ng/) reported that Nigeria’s inflation rate surged to 20.52% in August 2022, the highest since September 2005")
     
     # Conclusion
-    st.markdown("**In Conclusion**, there is a price imbalance in Nigeria as food-producing states sell at cheaper price but due to insecurity, inflation and other economic indicator the prices changes as it gets to other states in the country.")
+    st.markdown("**In Conclusion**, there is a price imbalance in Nigeria as food-producing states sell at cheaper price but due to insecurity, inflation and other economic indicators the price changes as it gets to other states in the country.")
     st.markdown("Thank you for reading")
     st.markdown("View codes and data on my [github](https://github.com/TheBlueZayn/Analysis-of-Nigerian-Food-Prices)")
     st.markdown("You can connect with me [here](https://www.linkedin.com/in/zaynab-arowosegbe-b292781a4/)")
@@ -384,7 +384,9 @@ with causes:
     # st.markdown("**Negative correlation between**")
     # st.markdown("- Fresh mudfish and dried mudfish")
     # st.markdown("- Iced sardine, dried fish sardine and catfish")
-
+    st.write("               ")
+    st.write("               ")
+    st.write("               ")
 
     st.markdown("**Influence of Covid-19**")
     fig_cov2, (ax1, ax2) = plt.subplots(1,2,figsize=(30,15))
@@ -412,7 +414,9 @@ with causes:
     fig_cov2.text(0.13, 0.73, "at the beginning of 2020", fontsize=22)
     st.write(fig_cov2)
 
-
+    st.write("               ")
+    st.write("               ")
+    st.write("               ")
 
     # Plot map
     fig_geo = px.scatter_geo(
