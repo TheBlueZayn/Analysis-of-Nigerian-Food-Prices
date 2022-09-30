@@ -291,7 +291,7 @@ with causes:
     st.markdown("- Russia-Ukraine crisis (*strain on the food supply chain as Nigeria imports some agricultural products*)")
     st.markdown("- Insecurity and")
     st.markdown("- Foreign exchange problem")
-    st.markdown("I'll be looking into some other factors.")
+    st.markdown("I'll be looking into insecurity and some other factors.")
 
 
     # Covid-19 influence
