@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import seaborn as sns
+from PIL import Image
 
 # Create subsections 
 header = st.container()
@@ -44,6 +45,9 @@ most_attacked= attack.sort_values(by=['attacks'], ascending=False)[:10]
 
 # Data 8
 economic = pd.read_csv("economic-indicators.csv")
+
+
+image = Image.open("covid.png")
 
 with header:
     st.title("""Analysis of Nigerian Food Prices (January 2017 - July 2022)""")
